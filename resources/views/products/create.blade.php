@@ -1,21 +1,27 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            商品一覧
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+
+@section('content')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div>
-                    <x-auth-validation-errors class="mb-4" :errors="$errors" />  
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
                         <form action="{{ route('product.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-5">
-                                <image-preview />
+                                <input type="file" required name="image1" accept=“image/png,image/jpeg,image/jpg” >
                                 <input type="file" name="image2" accept=“image/png,image/jpeg,image/jpg” >
                                 <input type="file" name="image3" accept=“image/png,image/jpeg,image/jpg” >
                                 <input type="file" name="image4" accept=“image/png,image/jpeg,image/jpg” >
@@ -24,7 +30,7 @@
                             <hr>
                             {{-- 名前、商品情報 --}}
                             <div>
-                                商品名:<input type="text" name="name">
+                                名前:<input type="text" name="name">
                                 商品情報:<input type="text" name="content">
                                 料金:<input type="number" name="price">
                             </div>
@@ -55,4 +61,5 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+
+@endsection
