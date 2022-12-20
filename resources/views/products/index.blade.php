@@ -1,10 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            商品一覧
-        </h2>
-    </x-slot>
-    
+@extends('layouts.app')
+
+@section('content')
     <div class="py-12">
     <x-auth-flash-message status="session('status')" /> 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -28,6 +24,7 @@
                                             </div>
                                             <div class="mt-4">
                                                 <h3 class="text-gray-700 flex justify-center text-sm tracking-widest title-font mb-1">{{ number_format($product->price) }}円(税込)</h3>
+                                                <p>よっ！</p>
                                             </div>
                                         </a>
                                     </div>
@@ -41,14 +38,4 @@
         </div>
     </div>
 
-    <script>
-     new Vue({
-        el: "#app",
-        data() {
-          return {
-            message:"Try Preview!"
-          }
-        },
-      })
-    </script>
-</x-app-layout>
+    @endsection
