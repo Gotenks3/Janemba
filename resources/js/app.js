@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./swiper');
 
 window.Vue = require('vue').default;
 
