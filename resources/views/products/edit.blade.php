@@ -1,9 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            商品一覧
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+
+@section('content')
 
     <section class="text-gray-600 body-font relative">
         <form action="{{ route('product.update',['product' => $product->id])}}" method="post" enctype="multipart/form-data">
@@ -68,4 +65,4 @@
         </form>
     </section>
     
-</x-app-layout>
+@endsection
