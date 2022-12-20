@@ -16,6 +16,8 @@
       rel="stylesheet"
     />
 
+    <script src="{{ mix('js/swiper.js') }}"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -33,6 +35,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <button type="button" onclick="location.href='{{ route('home')}}'" class="bg-white border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-600 rounded text-md">ホーム</button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
