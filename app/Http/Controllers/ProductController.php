@@ -44,15 +44,6 @@ class ProductController extends Controller
         $imageFile3 = $request->image3;
         $imageFile4 = $request->image4;
 
-        // for ($i = 0; $i < 4; $i++) {
-        //     if (is_null$imageFile . $i .) {
-        //         $fileNameToStore .$i = null;
-        //     } else {
-        //       $fileNameToStore($i) = ImageService::upload($imageFile($i), 'products');   
-        //     }
-        //     dd("aiueo($i)");
-        // }
-
         // 画像1枚目は必須で登録するためNull判定なし
         $fileNameToStore1 = ImageService::upload($imageFile1, 'products');   
         // 画像２枚目処理
@@ -174,6 +165,15 @@ class ProductController extends Controller
         return redirect()
         ->route('product.index')
         ->with(['message' => '商品情報を更新しました。','status' => 'info']);
+    }
+
+    public function destroy($product)
+    {
+        $product = Product::findOrFail($product);
+
+        $product->delete();
+        return redirect()->route('product.index')
+        ->with(['message' => '商品を削除しました。', 'status' => 'alert']);
 
     }
 }
