@@ -18,6 +18,7 @@ class Product extends Model
 
     protected $fillable = [
         'user_id',
+        'secondary_category_id',
         'name',
         'content',
         'image1',
@@ -28,4 +29,9 @@ class Product extends Model
         'price',
         'is_selling'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(SecondaryCategory::class, 'secondary_category_id');
+    }
 }

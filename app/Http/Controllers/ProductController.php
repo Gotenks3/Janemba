@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\PrimaryCategory;
 use App\Enums\ProductState;
 use App\Enums\ProductSelling;
 use App\Http\Requests\ProductCreateRequest;
@@ -26,6 +27,10 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($product);
 
+        // $x = $product->with('category')->get();
+
+        // dd($x);
+
         return view('products.show', compact('product'));
     }
 
@@ -34,7 +39,9 @@ class ProductController extends Controller
         $status = ProductState::asSelectArray();
         $sell = ProductSelling::asSelectArray();
 
-        return view('products.create', compact('status','sell'));
+        $categories = PrimaryCategory::with('secondary')->get();
+        // dd($category);
+        return view('products.create', compact('status','sell','categories'));
     }
 
     public function store(ProductCreateRequest $request)
@@ -68,6 +75,7 @@ class ProductController extends Controller
         try {
             Product::create([
                 'user_id' => Auth::id(),
+                'secondary_category_id' => $request->category,
                 'name' => $request->name,
                 'content' => $request->content,
                 'image1' => $fileNameToStore1,
@@ -94,8 +102,9 @@ class ProductController extends Controller
 
         $status = ProductState::asSelectArray();
         $sell = ProductSelling::asSelectArray();
+        $categories = PrimaryCategory::with('secondary')->get();
 
-        return view('products.edit', compact('product', 'status', 'sell'));
+        return view('products.edit', compact('product', 'status', 'sell','categories'));
     }
 
     public function update(ProductUpdateRequest $request, $product)
@@ -148,6 +157,7 @@ class ProductController extends Controller
         try {
             $product->fill([
                 'name' => $request->name,
+                'secondary_category_id' => $request->category,
                 'content' => $request->content,
                 'image1' => $fileNameToStore1,
                 'image2' => $fileNameToStore2,
@@ -170,7 +180,7 @@ class ProductController extends Controller
     public function destroy($product)
     {
         $product = Product::findOrFail($product);
-dd(1);
+
         $product->delete();
         return redirect()->route('product.index')
         ->with(['message' => '商品を削除しました。', 'status' => 'alert']);
