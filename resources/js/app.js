@@ -7,6 +7,9 @@
 require('./bootstrap');
 require('./swiper');
 
+// import Vuetify from 'vuetify';
+// Vue.use(Vuetify);
+
 window.Vue = require('vue').default;
 /**
  * The following block of code may be used to automatically register your
@@ -24,6 +27,8 @@ Vue.component('image-preview1-component', require('./components/ImagePreview1Com
 Vue.component('image-preview2-component', require('./components/ImagePreview2Component.vue').default);
 Vue.component('image-preview3-component', require('./components/ImagePreview3Component.vue').default);
 Vue.component('image-preview4-component', require('./components/ImagePreview4Component.vue').default);
+Vue.component('delete-alert-component', require('./components/DeleteAlertComponent.vue').default);
+
 
 
 
