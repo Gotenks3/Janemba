@@ -8,7 +8,7 @@
             accept=“image/png,image/jpeg,image/jpg”
             @change="uploadFile">
         <div v-if="url">
-            <img :src="url">
+            <img :src="url" id="preview">
         </div>
     </div>
 </template>
@@ -29,8 +29,4 @@ export default {
 }
 </script>
 
-<style>
-    img{
-        width: 120px;
-    }
-</style>
+

@@ -41,22 +41,23 @@
                                 <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
                             </select><br>
+
                         <div class="flex flex-wrap mt-7">
-                            <div class="mb-5">
-                                <p class="text-blue-300">画像１</p>
-                                <image-preview1-component />
+                            <div class="mb-5 mr-5">
+                                <p>画像１</p>
+                                <image-preview1-component style="width:120px; hight: 120px;"/>
                             </div>
                             <div class="mb-5">
                                 <p>画像２</p>
-                                <image-preview2-component />
+                                <image-preview2-component style="width:120px; hight: 120px;"/>
                             </div>
                             <div class="mb-5">
                                 <p>画像３</p>
-                                <image-preview3-component />
+                                <image-preview3-component style="width:120px; hight: 120px;"/>
                             </div>
                             <div class="mb-5">
                                 <p>画像４</p>
-                                <image-preview4-component />
+                                <image-preview4-component style="width:120px; hight: 120px;"/>
                             </div>
                         </div>
                         </form>
