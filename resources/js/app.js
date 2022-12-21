@@ -21,6 +21,12 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('image-preview1-component', require('./components/ImagePreview1Component.vue').default);
+Vue.component('image-preview2-component', require('./components/ImagePreview2Component.vue').default);
+Vue.component('image-preview3-component', require('./components/ImagePreview3Component.vue').default);
+Vue.component('image-preview4-component', require('./components/ImagePreview4Component.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

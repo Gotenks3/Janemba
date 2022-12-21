@@ -40,8 +40,12 @@
   <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
 </div>
+
                 </div>
             </div>
+            <div id="app">
+                    <example-component></example-component>
+                </div>
         </div>
     </div>
 </div>
