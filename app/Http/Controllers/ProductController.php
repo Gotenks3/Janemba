@@ -170,10 +170,9 @@ class ProductController extends Controller
     public function destroy($product)
     {
         $product = Product::findOrFail($product);
-
+dd(1);
         $product->delete();
         return redirect()->route('product.index')
         ->with(['message' => '商品を削除しました。', 'status' => 'alert']);
-
     }
 }
