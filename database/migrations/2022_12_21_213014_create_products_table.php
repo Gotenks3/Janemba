@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreignId('secondary_category_id')
-            ->constrained('secondary_categories');
+            ->constrained();
             $table->string('name');
             $table->text('content');
             $table->string('image1');
