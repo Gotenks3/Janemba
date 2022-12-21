@@ -22,6 +22,10 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('image-preview1-component', require('./components/ImagePreview1Component.vue').default);
+Vue.component('image-preview2-component', require('./components/ImagePreview2Component.vue').default);
+Vue.component('image-preview3-component', require('./components/ImagePreview3Component.vue').default);
+Vue.component('image-preview4-component', require('./components/ImagePreview4Component.vue').default);
+
 
 
 /**

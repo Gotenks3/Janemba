@@ -7,25 +7,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div>
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />  
+
 
                         <form action="{{ route('product.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="mb-5">
-                                <image-preview1-component />
-                                <input type="file" name="image2" accept=“image/png,image/jpeg,image/jpg” >
-                                <input type="file" name="image3" accept=“image/png,image/jpeg,image/jpg” >
-                                <input type="file" name="image4" accept=“image/png,image/jpeg,image/jpg” >
-                            </div>
 
                             <hr>
                             {{-- 名前、商品情報 --}}
@@ -53,8 +40,25 @@
                                 @foreach($status as $key => $value)
                                 <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
-                            </select>
-
+                            </select><br>
+                        <div class="flex flex-wrap mt-7">
+                            <div class="mb-5">
+                                <p class="text-blue-300">画像１</p>
+                                <image-preview1-component />
+                            </div>
+                            <div class="mb-5">
+                                <p>画像２</p>
+                                <image-preview2-component />
+                            </div>
+                            <div class="mb-5">
+                                <p>画像３</p>
+                                <image-preview3-component />
+                            </div>
+                            <div class="mb-5">
+                                <p>画像４</p>
+                                <image-preview4-component />
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
