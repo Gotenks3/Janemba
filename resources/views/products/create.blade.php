@@ -21,7 +21,7 @@
                             @csrf
 
                             <div class="mb-5">
-                                <input type="file" required name="image1" accept=“image/png,image/jpeg,image/jpg” >
+                                <image-preview1-component />
                                 <input type="file" name="image2" accept=“image/png,image/jpeg,image/jpg” >
                                 <input type="file" name="image3" accept=“image/png,image/jpeg,image/jpg” >
                                 <input type="file" name="image4" accept=“image/png,image/jpeg,image/jpg” >
