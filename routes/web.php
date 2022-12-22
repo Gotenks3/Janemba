@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -17,6 +18,16 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// プロフィール
+Route::prefix('profile')->group(function(){
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    // Route::post('add', [CartController::class, 'add'])->name('cart.add');   
+    // Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
+    // Route::get('checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    // Route::get('success', [CartController::class, 'success'])->name('cart.success');
+    // Route::get('cancel', [CartController::class, 'cancel'])->name('cart.cancel');
 });
 
 Auth::routes();

@@ -51,7 +51,6 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    <p>>ういー</p>
                                 </li>
                             @endif
 
@@ -70,7 +69,12 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Logout
+                                    </a>
+
+                                    {{-- Profile --}}
+                                    <a class="dropdown-item" href="{{ route('profile.index') }}">
+                                        Profile
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
