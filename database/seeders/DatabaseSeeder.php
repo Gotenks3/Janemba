@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PrimaryCategorySeeder::class,
             SecondaryCategorySeeder::class,
             ProductSeeder::class,
+            ProfileSeeder::class,
         ]);
     }
 }
