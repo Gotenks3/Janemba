@@ -2,14 +2,22 @@
 
 @section('content')
 
-<section class="pt-16 bg-blueGray-50">
-    <div class="w-full lg:w-4/12 px-4 mx-auto">
-        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+
+<section class="pt-4 bg-blueGray-50">
+    <x-auth-flash-message status="session('status')" /> 
+    <div class="w-full lg:w-4/6 px-4 mx-auto">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-4">
             <div class="px-6">
                 <div class="flex flex-wrap justify-center">
+                @if (is_null($profile))
+                    <h3>
+                        ＊プロフィールが登録されていません。<br>
+                        <button type="button" onclick="location.href='{{ route('profile.create')}}'" class="bg-blue-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">登録はこちら</button>
+                    </h3>
+                @else
                     <div class="w-full px-4 flex justify-center">
                         <div class="relative">
-                            <img src="{{ asset('storage/products/'  . $product->image1) }}" alt="no-image" class="object-contain shadow-xl rounded h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+                            <img src="{{ asset('storage/profiles/'  . $profile->icon) }}" alt="no-image" class="rounded">
                         </div>
                     </div>
                     <div class="w-full px-4 text-center mt-20">
@@ -45,9 +53,13 @@
                     <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                         {{$profile->nickname}}
                     </h3>
-                    <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+                    <div class="text-sm  leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                        愛知
+                        @foreach(config('pref') as $pref_id => $name)
+                                @if ($pref_id === $profile->prefecture)
+                                <div>{{ $name }}</div>
+                                @endif
+                        @endforeach
                     </div>
                     <div class="mb-2 text-blueGray-600 mt-10">
                         <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
@@ -56,6 +68,7 @@
                     <div class="mb-2 text-blueGray-600">
                         <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
                         性別
+                        <p>{{\App\Enums\GenderType::getDescription($profile->gender)}}</p>
                     </div>
                 </div>
                 <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -70,6 +83,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+
             </div>
         </div>
     </div>

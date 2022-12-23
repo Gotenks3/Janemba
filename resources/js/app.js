@@ -28,6 +28,8 @@ Vue.component('image-preview2-component', require('./components/ImagePreview2Com
 Vue.component('image-preview3-component', require('./components/ImagePreview3Component.vue').default);
 Vue.component('image-preview4-component', require('./components/ImagePreview4Component.vue').default);
 Vue.component('delete-alert-component', require('./components/DeleteAlertComponent.vue').default);
+Vue.component('icon-preview-component', require('./components/IconPreviewComponent.vue').default);
+
 
 
 
