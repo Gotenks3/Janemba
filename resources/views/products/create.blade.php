@@ -93,7 +93,7 @@
                         </div>
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
-                                <div class="mb-5 mr-5">
+                                <div class="mb-5">
                                     <p>画像１</p>
                                     <image-preview1-component class="lex-nowrap" style="width:120px; hight: 120px;" />
                                 </div>
