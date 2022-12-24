@@ -10,6 +10,7 @@
 
                 <form action="{{ route('profile.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}" />
 
                     <hr>
                     {{-- 名前、商品情報 --}}
@@ -20,7 +21,7 @@
                                     <label for="nickname" class="leading-7 text-sm text-gray-600">ニックネーム</label>
                                     <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
-                                <input type="text" id="nickname" name="nickname" value="{{ old('name') }}" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="text" id="nickname" name="nickname" value="{{ old('nickname') }}" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
 
@@ -40,7 +41,7 @@
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
                                 <div class="flex">
-                                    <label for="icon" class="leading-7 text-sm text-gray-600">アイコン</label>
+                                    <label for="icon" class="leading-7 text-sm text-gray-600">アイコン画像</label>
                                     <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
                                 <icon-preview-component class="lex-nowrap" value="{{ old('icon') }}" style="width:120px; hight: 120px;" />
@@ -59,7 +60,7 @@
 
                                 <select name="prefecture" id="prefecture" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     @foreach(config('pref') as $pref_id => $name)
-                                    <option value="{{ $pref_id }}">{{ $name }}</option>
+                                    <option value="{{ $pref_id }}" @if (old($pref_id) == config('pref') ) selected @endif>{{ $name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -76,7 +77,7 @@
                                 </div>
                                 <select name="gender" id="gender" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     @foreach($gender as $key => $value)
-                                    <option value="{{$key}}">{{$value}}</option>
+                                    <option value="{{$key}}" @if (old($key) == $key) selected @endif>{{$value}}</option>
                                     @endforeach
                                 </select>
                             </div>

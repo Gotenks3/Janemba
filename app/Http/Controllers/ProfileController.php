@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\GenderType;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileCreateRequest;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Profile;
@@ -17,7 +18,10 @@ class ProfileController extends Controller
         // profileからリレーションで繋いだUserのidとログインしているユーザーを比較
         $profile = User::find(Auth::id())->profile;
 // dd($profile->prefecture);
-// dd((config('pref.$profile->prefecture')));
+// dd((config('pref')));
+// $a = GenderType::getValues();
+// $x = array_keys(config('pref'));
+// dd($a, $x);
         return view('profile.index', compact('profile'));
     }
 
@@ -31,7 +35,7 @@ class ProfileController extends Controller
         return view('profile.create', compact('profile', 'gender'));
     }
 
-    public function store(Request $request) 
+    public function store(ProfileCreateRequest $request) 
     {
         $imageFile = $request->icon;
 

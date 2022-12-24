@@ -39,6 +39,18 @@ class UserSeeder extends Seeder
                 'email' => 'd@d',
                 'password' => Hash::make('rikuriku'),
                 'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'ウーブ',
+                'email' => 'e@e',
+                'password' => Hash::make('rikuriku'),
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'ボルンが',
+                'email' => 'f@f',
+                'password' => Hash::make('rikuriku'),
+                'created_at' => '2021/01/01 11:11:11'
             ]
         ]);
     }

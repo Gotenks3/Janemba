@@ -2,10 +2,9 @@
 
 @section('content')
 
-
 <section class="pt-4 bg-blueGray-50">
     <x-auth-flash-message status="session('status')" /> 
-    <div class="w-full lg:w-4/6 px-4 mx-auto">
+    <div class="w-full lg:w-3/6 px-4 mx-auto">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-4">
             <div class="px-6">
                 <div class="flex flex-wrap justify-center">
@@ -17,10 +16,10 @@
                 @else
                     <div class="w-full px-4 flex justify-center">
                         <div class="relative">
-                            <img src="{{ asset('storage/profiles/'  . $profile->icon) }}" alt="no-image" class="rounded">
+                            <img src="{{ asset('storage/profiles/'  . $profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;">
                         </div>
                     </div>
-                    <div class="w-full px-4 text-center mt-20">
+                    <div class="w-full px-4 text-center mt-6">
                         <div class="flex justify-center py-4 lg:pt-4 pt-8">
                             <div class="mr-4 p-3 text-center">
                                 <a href="" class="no-underline">
@@ -49,15 +48,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-12">
+                <div class="text-center mt-6">
                     <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                         {{$profile->nickname}}
                     </h3>
-                    <div class="text-sm  leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+                    <div class="mb-2 text-blueGray-600 mt-10">
+
                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                         @foreach(config('pref') as $pref_id => $name)
                                 @if ($pref_id === $profile->prefecture)
-                                <div>{{ $name }}</div>
+                                    {{ $name }}
                                 @endif
                         @endforeach
                     </div>
@@ -67,8 +67,7 @@
                     </div>
                     <div class="mb-2 text-blueGray-600">
                         <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                        性別
-                        <p>{{\App\Enums\GenderType::getDescription($profile->gender)}}</p>
+                        {{\App\Enums\GenderType::getDescription($profile->gender)}}
                     </div>
                 </div>
                 <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
