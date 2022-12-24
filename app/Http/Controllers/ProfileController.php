@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function index() 
+    public function index()
     {
         // profileからリレーションで繋いだUserのidとログインしているユーザーを比較
         $profile = User::find(Auth::id())->profile;
-// dd($profile->prefecture);
-// dd((config('pref')));
-// $a = GenderType::getValues();
-// $x = array_keys(config('pref'));
-// dd($a, $x);
+        // dd($profile->prefecture);
+        // dd((config('pref')));
+        // $a = GenderType::getValues();
+        // $x = array_keys(config('pref'));
+        // dd($a, $x);
         return view('profile.index', compact('profile'));
     }
 
-    public function create() 
+    public function create()
     {
         // profileからリレーションで繋いだUserのidとログインしているユーザーを比較
         $profile = User::find(Auth::id())->profile;
@@ -35,11 +35,11 @@ class ProfileController extends Controller
         return view('profile.create', compact('profile', 'gender'));
     }
 
-    public function store(ProfileCreateRequest $request) 
+    public function store(ProfileCreateRequest $request)
     {
         $imageFile = $request->icon;
 
-        $fileNameToStore1 = ImageService::upload($imageFile, 'profiles');   
+        $fileNameToStore1 = ImageService::upload($imageFile, 'profiles');
 
         try {
             Profile::create([
@@ -51,13 +51,53 @@ class ProfileController extends Controller
                 'gender' => $request->gender,
                 'age' => $request->age
             ]);
-            } catch (\Exception $e) {
-                $e->getMessage();
-                session()->flash('flash_message', 'プロフィール登録が失敗しました');
-            }
+        } catch (\Exception $e) {
+            $e->getMessage();
+            session()->flash('flash_message', 'プロフィール登録が失敗しました');
+        }
 
 
         return redirect()->route('profile.index')
-        ->with(['message' => 'プロフィールを登録しました。' , 'status' => 'info']);
+            ->with(['message' => 'プロフィールを登録しました。', 'status' => 'info']);
+    }
+
+    public function edit()
+    {
+        $profile = User::find(Auth::id())->profile;
+        $gender = GenderType::asSelectArray();
+
+        return view('profile.edit', compact('profile', 'gender'));
+    }
+
+    public function update(Request $request)
+    {
+        $profile = User::find(Auth::id())->profile;
+
+        $icon = $request->icon;
+
+        // 念のためのif判定
+        if ($icon) {
+            $fileNameToStore1 = ImageService::upload($icon, 'profiles');
+        } else {
+            $fileNameToStore1 = $profile->icon;
+        }
+
+        try {
+            $profile->fill([
+                'nickname' => $request->nickname,
+                'content' => $request->content,
+                'icon' => $fileNameToStore1,
+                'prefecture' => $request->prefecture,
+                'gender' => $request->gender,
+                'age' => $request->age
+            ])->save();
+        } catch (\Exception $e) {
+            $e->getMessage();
+            session()->flash('flash_message', 'プロフィール更新が失敗しました');
+        }
+
+        return redirect()
+        ->route('profile.index')
+        ->with(['message' => 'プロフィールを更新しました。','status' => 'info']);
     }
 }

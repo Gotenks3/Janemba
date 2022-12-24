@@ -32,7 +32,7 @@ Route::prefix('profile')->group(function(){
     Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
     Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
     Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('update/{profile}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('update', [ProfileController::class, 'update'])->name('profile.update');
     // Route::post('add', [CartController::class, 'add'])->name('cart.add');   
     // Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
     // Route::get('checkout', [CartController::class, 'checkout'])->name('cart.checkout');
