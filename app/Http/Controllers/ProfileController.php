@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enums\GenderType;
-use Illuminate\Http\Request;
 use App\Http\Requests\ProfileCreateRequest;
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
-use App\Models\Product;
 use App\Models\Profile;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
@@ -69,15 +68,17 @@ class ProfileController extends Controller
         return view('profile.edit', compact('profile', 'gender'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request)
     {
         $profile = User::find(Auth::id())->profile;
 
-        $icon = $request->icon;
+        $requestIcon = $request->icon;
 
+        // dd($icon, $profile->icon);
         // 念のためのif判定
-        if ($icon) {
-            $fileNameToStore1 = ImageService::upload($icon, 'profiles');
+        if ($requestIcon) {
+            // dd(1);
+            $fileNameToStore1 = ImageService::upload($requestIcon, 'profiles');
         } else {
             $fileNameToStore1 = $profile->icon;
         }
