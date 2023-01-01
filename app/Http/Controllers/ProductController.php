@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\PrimaryCategory;
+use App\Models\User;
 use App\Enums\ProductState;
 use App\Enums\ProductSelling;
 use App\Http\Requests\ProductCreateRequest;
@@ -27,12 +28,16 @@ class ProductController extends Controller
     public function show($product)
     {
         $product = Product::findOrFail($product);
+        // dd($product);
 
-        // $x = $product->with('category')->get();
+        $product_sell = ProductSelling::asSelectArray($product->is_selling);
+        // dd($x, $product->is_selling);
 
-        // dd($x);
+        // ユーザー情報取得
+        $user = User::where('id', $product->user_id)->with('profile')->first();
+        // dd($user);
 
-        return view('products.show', compact('product'));
+        return view('products.show', compact('product', 'user', 'product_sell'));
     }
 
     public function create() 
