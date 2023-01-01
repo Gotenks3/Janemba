@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ChangeEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +25,17 @@ Route::get('/', function () {
 Route::prefix('mypage')->group(function(){
     Route::get('/', [UserController::class, 'mypage'])->name('mypage');
 });
+
+// メールアドレス変更
+Route::prefix('email')->group(function(){
+    // view
+    Route::get('/edit', [ChangeEmailController::class, 'index'])->name('email');
+    // 編集
+    Route::post('/', [ChangeEmailController::class, 'sendChangeEmailLink'])->name('email.reset');
+});
+
+// 新規メールアドレスに更新
+Route::get("reset/{token}", [ChangeEmailController::class, 'reset'])->name('reset');
 
 // プロフィール
 Route::prefix('profile')->group(function(){
