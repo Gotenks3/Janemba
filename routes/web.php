@@ -34,6 +34,9 @@ Route::prefix('email')->group(function(){
     Route::post('/', [ChangeEmailController::class, 'sendChangeEmailLink'])->name('email.reset');
 });
 
+// 新規メールアドレスに更新
+Route::get("reset/{token}", [ChangeEmailController::class, 'reset'])->name('reset');
+
 // プロフィール
 Route::prefix('profile')->group(function(){
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
