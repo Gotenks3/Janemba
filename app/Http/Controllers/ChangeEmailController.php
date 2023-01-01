@@ -70,7 +70,8 @@ class ChangeEmailController extends Controller
                 ->where('token', $token)
                 ->delete();
 
-            return redirect('/home')->with('flash_message', 'メールアドレスを更新しました！');
+            return redirect()->route('mypage')
+                ->with(['message' => 'メールアドレスを変更しました。' , 'status' => 'info']);
         } else {
             // レコードが存在していた場合削除
             if ($email_resets) {
@@ -78,7 +79,8 @@ class ChangeEmailController extends Controller
                     ->where('token', $token)
                     ->delete();
             }
-            return redirect('/home')->with('flash_message', 'メールアドレスの更新に失敗しました。');
+            return redirect()->route('mypage')
+                ->with(['message' => 'メールアドレスの変更に失敗しました。' , 'status' => 'alert']);
         }
     }
 

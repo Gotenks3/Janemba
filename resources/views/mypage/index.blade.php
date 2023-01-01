@@ -3,6 +3,7 @@
 @section('content')
 
 <section class="text-gray-600 body-font relative">
+    <x-auth-flash-message status="session('status')" />
     <div class="container px-5 py-12 mx-auto">
         <div class="flex flex-col text-center w-full mb-12">
             <h1 class="mb-20">マイページ一覧</h1>

@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="py-12">
+    <x-auth-flash-message status="session('status')" />
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 <div class="card">
                     <div class="card-header">メールアドレス変更</div>
-                    <x-auth-flash-message status="session('status')" />
 
                     <form action="{{ route('email.reset')}}" method="post">
                         @csrf
