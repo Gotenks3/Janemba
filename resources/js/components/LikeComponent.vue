@@ -11,12 +11,11 @@
 
 <script>
   export default {
-    data() {
-      return {
-        product: [], //postの情報がこの変数に入っている前提 post.idで使っているので。
-      };
+
+    props: {
+     product: Object,
     },
-    
+  
     methods: {
       like(productId) {
         axios.post(`/like/${productId}`).then(({ data }) => {

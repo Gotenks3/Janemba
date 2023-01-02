@@ -2,10 +2,14 @@
 
 @section('content')
 
+
+
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-12 mx-auto flex flex-col border-2 bg-slate-50">
         <div class="lg:w-4/6 mx-auto border">
-            <div class="rounded-lg h-100 overflow-hidden">
+            <div class="rounded-lg h-64 overflow-hidden">
+                {{-- Component受け渡しテスト --}}
+                {{-- <product-test-component :product='@json($product)'/> --}}
 
                 <!-- Slider main container -->
                 <div class="swiper">
@@ -15,7 +19,7 @@
 
                         {{-- 画像１枚目 --}}
                         <div class="swiper-slide">
-                            <img alt="content" class="object-cover " src="{{ asset('storage/products/'  . $product->image1) }}">
+                            <img alt="content" class="object-contain" src="{{ asset('storage/products/'  . $product->image1) }}">
                         </div>
                         {{-- 画像２枚目 --}}
                         @if (isset($product->image2))
@@ -52,9 +56,9 @@
                 <div class="sm:w-1/3  sm:pr-4 sm:py-4">
                     <div class="flex justify-center">
                         @if (!is_null($product->icon))
-                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-contain" style="border-radius: 50%; width: 200px; height: 200px;"></img>
+                        <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-contain" style="border-radius: 50%; width: 200px; height: 200px;"></img>
                         @else
-                            <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
+                        <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
                         @endif
                     </div>
 
@@ -92,8 +96,8 @@
                     <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
                         <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">カートに追加</button>
-                        
-                        <like-component />
+
+                        <like-component :product='@json($product)' />
                     </div>
                 </div>
             </div>
@@ -104,6 +108,5 @@
         </div>
     </div>
 </section>
-
 
 @endsection

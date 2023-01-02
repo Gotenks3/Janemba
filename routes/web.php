@@ -56,8 +56,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // いいね機能
-Route::post('/like/{productId}',[LikeController::class,'store']);
-Route::post('/unlike/{productId}',[LikeController::class,'destroy']);
+Route::post('/like/{productId}',[LikeController::class,'store'])->name('like');
+Route::post('/unlike/{productId}',[LikeController::class,'destroy'])->name('unlike');
 
 
 Route::resource('product', ProductController::class)->middleware('auth');

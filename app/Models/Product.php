@@ -30,7 +30,7 @@ class Product extends Model
         'is_selling'
     ];
 
-    //多対多のリレーションを書く
+    //多対多のリレーション
     public function likes()
     {
         // 1: リレーション先モデル　
@@ -40,7 +40,7 @@ class Product extends Model
         return $this->belongsToMany('App\Models\User', 'likes', 'product_id', 'user_id')->withTimestamps();
     }
 
-    //この投稿に対して既にlikeしたかどうかを判別する
+    // この投稿に対して既にlikeしたかどうかを判別する
     public function isLike($productId)
     {
         return $this->likes()->where('product_id', $productId)->exists();
