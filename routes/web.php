@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeEmailController;
-
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +54,10 @@ Route::prefix('profile')->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// いいね機能
+Route::post('/like/{productId}',[LikeController::class,'store']);
+Route::post('/unlike/{productId}',[LikeController::class,'destroy']);
 
 
 Route::resource('product', ProductController::class)->middleware('auth');
