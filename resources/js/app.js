@@ -6,11 +6,14 @@
 
 require('./bootstrap');
 require('./swiper');
+require('./micromodal');
 
-// import Vuetify from 'vuetify';
-// Vue.use(Vuetify);
 
 window.Vue = require('vue').default;
+
+// window.Vue = require('vue').default;
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -42,4 +45,5 @@ Vue.component('icon-preview-component', require('./components/IconPreviewCompone
 
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify(),
 });
