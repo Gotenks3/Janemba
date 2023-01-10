@@ -80,13 +80,6 @@
         </div>
     </form>
 
-
-
-
-    
-
-
-
     {{-- <form class="delete" method="delete" action="{{ route('product.destroy', ['product' => $product->id]) }}">
     @csrf
     @method('delete')
@@ -96,18 +89,3 @@
 
 </section>
 @endsection
-
-<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=Array.from%2CObject.assign"></script>
-<script script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-
-<style>
-    .modal {
-        display: none;
-    }
-
-    .modal.is-open {
-        display: block;
-    }
-</style>

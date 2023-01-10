@@ -6,8 +6,6 @@
 
 require('./bootstrap');
 require('./swiper');
-require('./micromodal');
-
 
 window.Vue = require('vue').default;
 
