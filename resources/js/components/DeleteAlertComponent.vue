@@ -9,24 +9,24 @@
         </template>
 
         <v-card>
-          <v-card-title class="text-h5 grey lighten-2">
-            Privacy Policy
+          <v-card-title class="text-h5 red lighten-2">
+            確認画面
           </v-card-title>
 
           <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            本当に削除してよろしいですか？
           </v-card-text>
 
           <v-divider></v-divider>
 
           <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="dialog = false">
-              I accept
+            <v-spacer>記事id: {{ product.id }}</v-spacer>
+
+            <v-btn color="gray" text @click="dialog = false">
+              いいえ
+            </v-btn>
+            <v-btn color="primary" text @click="submit(product.id)">
+              はい
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -42,11 +42,39 @@ export default {
       dialog: false,
     }
   },
-  // methods: {
-  //   confirm() {
-  //     alert('確認しました')
-  //     this.my_dialog = false
-  //   },
-  // },
+  props: {
+    product: {
+      type: Object,
+    },
+    endpoint: {
+      type: String,
+    },
+  },
+  methods: {
+    submit(id) {
+      const axios = require('axios');
+      console.log(20000);
+      axios.delete(`/product/${id}`).then(res => {
+        console.log(10000);
+        console.log(res.data);
+        alert("記事を削除しました。");
+      })
+        .catch(err => console.log(err));
+
+      // const headers = {
+      //           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      //       }
+      //  fetch(`http://127.0.0.1:8000/product/${id}`, {
+      //   method: "delete",
+
+      // })
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     alert("記事を削除しました。");
+      //     this.fetchArticles();
+      //   })
+      //   .catch(err => console.log(err));
+    }
+  }
 }
 </script>

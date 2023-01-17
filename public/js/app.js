@@ -5318,12 +5318,42 @@ __webpack_require__.r(__webpack_exports__);
     return {
       dialog: false
     };
-  } // methods: {
-  //   confirm() {
-  //     alert('確認しました')
-  //     this.my_dialog = false
-  //   },
-  // },
+  },
+  props: {
+    product: {
+      type: Object
+    },
+    endpoint: {
+      type: String
+    }
+  },
+  methods: {
+    submit: function submit(id) {
+      var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+      console.log(20000);
+      axios["delete"]("/product/".concat(id)).then(function (res) {
+        console.log(10000);
+        console.log(res.data);
+        alert("記事を削除しました。");
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+
+      // const headers = {
+      //           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      //       }
+      //  fetch(`http://127.0.0.1:8000/product/${id}`, {
+      //   method: "delete",
+
+      // })
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     alert("記事を削除しました。");
+      //     this.fetchArticles();
+      //   })
+      //   .catch(err => console.log(err));
+    }
+  }
 });
 
 /***/ }),
@@ -5524,10 +5554,10 @@ var render = function render() {
       expression: "dialog"
     }
   }, [_vm._v(" "), _c("v-card", [_c("v-card-title", {
-    staticClass: "text-h5 grey lighten-2"
-  }, [_vm._v("\n          Privacy Policy\n        ")]), _vm._v(" "), _c("v-card-text", [_vm._v("\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex\n          ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat\n          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit\n          anim id est laborum.\n        ")]), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("v-card-actions", [_c("v-spacer"), _vm._v(" "), _c("v-btn", {
+    staticClass: "text-h5 red lighten-2"
+  }, [_vm._v("\n          確認画面\n        ")]), _vm._v(" "), _c("v-card-text", [_vm._v("\n          本当に削除してよろしいですか？\n        ")]), _vm._v(" "), _c("v-divider"), _vm._v(" "), _c("v-card-actions", [_c("v-spacer", [_vm._v("記事id: " + _vm._s(_vm.product.id))]), _vm._v(" "), _c("v-btn", {
     attrs: {
-      color: "primary",
+      color: "gray",
       text: ""
     },
     on: {
@@ -5535,7 +5565,17 @@ var render = function render() {
         _vm.dialog = false;
       }
     }
-  }, [_vm._v("\n            I accept\n          ")])], 1)], 1)], 1)], 1)]);
+  }, [_vm._v("\n            いいえ\n          ")]), _vm._v(" "), _c("v-btn", {
+    attrs: {
+      color: "primary",
+      text: ""
+    },
+    on: {
+      click: function click($event) {
+        return _vm.submit(_vm.product.id);
+      }
+    }
+  }, [_vm._v("\n            はい\n          ")])], 1)], 1)], 1)], 1)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
