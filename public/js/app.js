@@ -5850,7 +5850,10 @@ var render = function render() {
       }
     }
   }, [_c("i", {
-    staticClass: "fas fa-heart"
+    staticClass: "fas fa-heart",
+    "class": {
+      "red-text": this.isLikedBy
+    }
   })])]);
 };
 var staticRenderFns = [];

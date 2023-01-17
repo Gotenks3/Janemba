@@ -9,8 +9,20 @@ class Like extends Model
 {
     use HasFactory;
 
+    /**
+     * モデルと関連しているテーブル
+     *
+     * @var string
+     */
+    protected $table = 'likes';
+
+    // User,Productの多対多中間テーブル
+
+
     protected $fillable = [
         'user_id',
         'product_id',
     ];
+
+    
 }

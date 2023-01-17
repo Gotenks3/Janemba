@@ -97,7 +97,9 @@
                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
                         <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">カートに追加</button>
 
-                        <like-component :product='@json($product)' />
+                        <like-component 
+                        :initial-is-liked--by='@json($product->isLike(Auth::user()))'
+                        :product='@json($product)' />
                     </div>
                 </div>
             </div>
