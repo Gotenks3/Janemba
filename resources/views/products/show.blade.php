@@ -100,6 +100,8 @@
                         <like-component 
                         :initial-is-liked-by='@json($product->isLike(Auth::user()))'
                         :initial-count-likes='@json($product->count_likes)' 
+                        :authorized='@json(Auth::check())'
+                        endpoint="{{ route('product.like', ['product' => $product]) }}"
                         :product='@json($product)' />
                     </div>
                 </div>

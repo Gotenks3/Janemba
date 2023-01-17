@@ -50,35 +50,10 @@ class Product extends Model
             : false;
     }
 
-    // public function isLikedBy(?User $user): bool
-    // {
-    //     return $user
-    //         ? (bool)$this->likes->where('id', $user->id)->count()
-    //         : false;
-    // }
 
     public function getCountLikesAttribute(): int
     {
         return $this->likes->count();
-    }
-
-    //isLikeを使って、既にlikeしたか確認したあと、いいねする（重複させない）
-    public function like($productId)
-    {
-        if ($this->isLike($productId)) {
-            //もし既に「いいね」していたら何もしない
-        } else {
-            $this->likes()->attach($productId);
-        }
-    }
-
-    //isLikeを使って、既にlikeしたか確認して、もししていたら解除する
-    public function unlike($productId)
-    {
-        if ($this->isLike($productId)) {
-            //もし既に「いいね」していたら消す
-            $this->likes()->detach($productId);
-        } else { }
     }
 
     public function category()
