@@ -30,7 +30,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($product);
         // dd($product);
         // $x = $product->isLike(Auth::user());
-        // dd($x);
+        // dd($product->count_likes);
+        // dd($x,$product);
 
         $product_sell = ProductSelling::asSelectArray($product->is_selling);
         // dd($x, $product->is_selling);
@@ -188,7 +189,7 @@ class ProductController extends Controller
     public function destroy($product)
     {
         $product = Product::findOrFail($product);
-
+// dd(1);
         $product->delete();
         return redirect()->route('product.index')
         ->with(['message' => '商品を削除しました。', 'status' => 'alert']);

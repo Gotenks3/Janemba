@@ -98,7 +98,8 @@
                         <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">カートに追加</button>
 
                         <like-component 
-                        :initial-is-liked--by='@json($product->isLike(Auth::user()))'
+                        :initial-is-liked-by='@json($product->isLike(Auth::user()))'
+                        :initial-count-likes='@json($product->count_likes)' 
                         :product='@json($product)' />
                     </div>
                 </div>

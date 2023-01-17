@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Product extends Model
 {
@@ -41,9 +42,24 @@ class Product extends Model
     }
 
     // この投稿に対して既にlikeしたかどうかを判別する
-    public function isLike($productId)
+    public function isLike(?User $user) : bool
     {
-        return $this->likes()->where('product_id', $productId)->exists();
+        // return $this->likes()->where('id', $user->id)->exists();
+        return $user
+            ? (bool)$this->likes->where('id', $user->id)->count()
+            : false;
+    }
+
+    // public function isLikedBy(?User $user): bool
+    // {
+    //     return $user
+    //         ? (bool)$this->likes->where('id', $user->id)->count()
+    //         : false;
+    // }
+
+    public function getCountLikesAttribute(): int
+    {
+        return $this->likes->count();
     }
 
     //isLikeを使って、既にlikeしたか確認したあと、いいねする（重複させない）
