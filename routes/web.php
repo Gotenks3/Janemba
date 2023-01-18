@@ -42,7 +42,6 @@ Route::prefix('profile')->group(function(){
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
     // Product-showから遷移
-    Route::get('/{profile}', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
     Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('update', [ProfileController::class, 'update'])->name('profile.update');
@@ -58,6 +57,10 @@ Route::prefix('product')->name('product.')->group(function () {
     Route::put('/{product}/like', [ProductController::class, 'like'])->name('like')->middleware('auth');
     Route::delete('/{product}/like', [ProductController::class, 'unlike'])->name('unlike')->middleware('auth');
 });
+
+//ユーザー詳細
+Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
+
 
 Auth::routes();
 

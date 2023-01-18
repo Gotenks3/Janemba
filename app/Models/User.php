@@ -51,4 +51,23 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    //多対多のリレーション
+    public function followers()
+    {
+        // 1: リレーション先モデル　
+        // 2: 中間テーブル名
+        // 3: 接続元のid(product_id) 
+        // 4: 接続先のid(user_id)　
+        return $this->belongsToMany('App\Models\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
+        // return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
+    }
+
+    // フォローしているか判定
+    public function isFollowedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->followers->where('id', $user->id)->count()
+            : false;
+    }
 }
