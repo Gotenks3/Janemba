@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeEmailController;
-
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,9 +51,14 @@ Route::prefix('profile')->group(function(){
     // Route::get('cancel', [CartController::class, 'cancel'])->name('cart.cancel');
 });
 
+// いいね機能
+Route::prefix('product')->name('product.')->group(function () {
+    Route::put('/{product}/like', [ProductController::class, 'like'])->name('like')->middleware('auth');
+    Route::delete('/{product}/like', [ProductController::class, 'unlike'])->name('unlike')->middleware('auth');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::resource('product', ProductController::class)->middleware('auth');

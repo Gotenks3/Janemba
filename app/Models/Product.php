@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Product extends Model
 {
@@ -29,6 +30,29 @@ class Product extends Model
         'price',
         'is_selling'
     ];
+
+    //多対多のリレーション
+    public function likes()
+    {
+        // 1: リレーション先モデル　
+        // 2: 中間テーブル名
+        // 3: 接続元のid(product_id) 
+        // 4: 接続先のid(user_id)　
+        return $this->belongsToMany('App\Models\User', 'likes', 'product_id', 'user_id')->withTimestamps();
+    }
+
+    // この投稿に対して既にlikeしたかどうかを判別する --bool
+    public function isLikedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->likes->where('id', $user->id)->count()
+            : false;
+    }
+
+    public function getCountLikesAttribute(): int
+    {
+        return $this->likes->count();
+    }
 
     public function category()
     {
