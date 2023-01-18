@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-12 mx-auto flex flex-col border-2 bg-slate-50">
         <div class="lg:w-4/6 mx-auto border">
@@ -54,13 +52,15 @@
             </div>
             <div class="flex flex-col sm:flex-row mt-10">
                 <div class="sm:w-1/3  sm:pr-4 sm:py-4">
-                    <div class="flex justify-center">
-                        @if (!is_null($product->icon))
-                        <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-contain" style="border-radius: 50%; width: 200px; height: 200px;"></img>
-                        @else
-                        <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
-                        @endif
-                    </div>
+                    <a href="{{ route('profile.show', ['profile' => $user->profile->id]) }}">
+                        <div class="flex justify-center">
+                            @if (!is_null($user->profile->icon))
+                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-contain" style="border-radius: 50%; width: 200px; height: 200px;"></img>
+                            @else
+                            <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
+                            @endif
+                        </div>
+                    </a>
 
                     <div class="flex flex-col items-center text-center justify-center">
                         <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $user->profile->nickname }}</h2>

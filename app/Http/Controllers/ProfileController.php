@@ -24,6 +24,17 @@ class ProfileController extends Controller
         return view('profile.index', compact('profile'));
     }
 
+    public function show($profile)
+    {
+        // dd(1);
+        $userProfile = User::findOrFail($profile)->profile;
+        $gender = GenderType::asSelectArray();
+
+        // dd($profileShow);
+
+        return view('profile.show', compact('userProfile','gender'));
+    }
+
     public function create()
     {
         // profileからリレーションで繋いだUserのidとログインしているユーザーを比較
