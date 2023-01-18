@@ -29,7 +29,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($product);
         // dd($product);
-        // $x = $product->isLike(Auth::user());
+        // $x = $product->isLikedBy(Auth::user());
         // dd($product->count_likes);
         // dd($x,$product);
 

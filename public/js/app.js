@@ -5532,9 +5532,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    product: {
-      type: Object
-    },
     initialIsLikedBy: {
       type: Boolean,
       "default": false
@@ -5542,10 +5539,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     initialCountLikes: {
       type: Number,
       "default": 0
-    },
-    authorized: {
-      type: Boolean,
-      "default": false
     },
     endpoint: {
       type: String
@@ -5560,10 +5553,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     clickLike: function clickLike() {
-      if (!this.authorized) {
-        alert('いいね機能はログイン中のみ使用できます');
-        return;
-      }
       this.isLikedBy ? this.unlike() : this.like();
     },
     like: function like() {
@@ -5578,7 +5567,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().put(_this.endpoint);
               case 2:
                 response = _context.sent;
-                console.log('おっつ');
+                console.log(1);
                 _this.isLikedBy = true;
                 _this.countLikes = response.data.countLikes;
                 _this.gotToLike = true;
@@ -5602,7 +5591,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"](_this2.endpoint);
               case 2:
                 response = _context2.sent;
-                console.log('にゃー');
+                console.log(2);
                 _this2.isLikedBy = false;
                 _this2.countLikes = response.data.countLikes;
                 _this2.gotToLike = false;
@@ -5973,12 +5962,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", [_c("button", {
-    staticClass: "rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4",
-    on: {
-      click: function click($event) {
-        return _vm.like(_vm.product.id);
-      }
-    }
+    staticClass: "rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
   }, [_c("i", {
     staticClass: "fas fa-heart",
     "class": {
@@ -5988,7 +5972,7 @@ var render = function render() {
     on: {
       click: _vm.clickLike
     }
-  })]), _vm._v("\n  (" + _vm._s(this.countLikes) + ")\n  いいね:" + _vm._s(this.isLikedBy) + "\n\n")]);
+  })]), _vm._v("\n" + _vm._s(this.countLikes) + "\n  \n\n")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

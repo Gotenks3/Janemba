@@ -41,15 +41,13 @@ class Product extends Model
         return $this->belongsToMany('App\Models\User', 'likes', 'product_id', 'user_id')->withTimestamps();
     }
 
-    // この投稿に対して既にlikeしたかどうかを判別する
-    public function isLike(?User $user) : bool
+    // この投稿に対して既にlikeしたかどうかを判別する --bool
+    public function isLikedBy(?User $user): bool
     {
-        // return $this->likes()->where('id', $user->id)->exists();
         return $user
             ? (bool)$this->likes->where('id', $user->id)->count()
             : false;
     }
-
 
     public function getCountLikesAttribute(): int
     {
