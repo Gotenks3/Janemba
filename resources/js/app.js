@@ -32,7 +32,10 @@ Vue.component('delete-alert-component', require('./components/DeleteAlertCompone
 Vue.component('icon-preview-component', require('./components/IconPreviewComponent.vue').default);
 
 Vue.component('like-component', require('./components/LikeComponent.vue').default);
+Vue.component('follow-component', require('./components/FollowComponent.vue').default);
+
 Vue.component('product-test-component', require('./components/ProductTestComponent.vue').default);
+
 
 
 

@@ -52,7 +52,7 @@
             </div>
             <div class="flex flex-col sm:flex-row mt-10">
                 <div class="sm:w-1/3  sm:pr-4 sm:py-4">
-                    <a href="{{ route('profile.show', ['profile' => $user->profile->id]) }}">
+                    <a href="{{ route('user.show', ['id' => $user->profile->id]) }}">
                         <div class="flex justify-center">
                             @if (!is_null($user->profile->icon))
                             <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-contain" style="border-radius: 50%; width: 200px; height: 200px;"></img>
@@ -88,6 +88,7 @@
                         <span class="ml-auto text-gray-900">
                             {{\App\Enums\ProductSelling::getDescription($product->is_selling)}}
                         </span>
+
                     </div>
                     <div class="flex border-t border-b mb-6 border-gray-200 py-2">
                         <span class="text-gray-500">サイズ</span>

@@ -43,6 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * ユーザーからproductModelにアクセス
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    // 出品数合計 --アクセサ
+    public function getCountProductsAttribute(): int
+    {
+        return $this->products->count();
+    }
 
     /**
      * ユーザーに関連プロフィール情報を取得
@@ -50,5 +63,45 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    //多対多のリレーション(フォロワー数)
+    public function followers()
+    {
+        // 1: リレーション先モデル　
+        // 2: 中間テーブル名
+        // 3: 接続元のid(followee_id) 
+        // 4: 接続先のid(follower_id)　
+        return $this->belongsToMany('App\Models\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
+    }
+
+    //多対多のリレーション(フォロー数)
+    public function follows()
+    {
+        // 1: リレーション先モデル　
+        // 2: 中間テーブル名
+        // 3: 接続元のid(follower_id) 
+        // 4: 接続先のid(followee_id)　
+        return $this->belongsToMany('App\Models\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
+    }
+
+    // フォローしているか判定
+    public function isFollowedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->followers->where('id', $user->id)->count()
+            : false;
+    }
+
+    // フォロワーの合計 --アクセサ
+    public function getCountFollowersAttribute(): int
+    {
+        return $this->followers->count();
+    }
+
+    // フォロワーの合計 --アクセサ
+    public function getCountFollowsAttribute(): int
+    {
+        return $this->follows->count();
     }
 }
