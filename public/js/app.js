@@ -5401,7 +5401,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       type: Boolean,
       "default": false
     },
-    countFollowers: {
+    initialCountFollowers: {
       type: Number,
       "default": 0
     },
@@ -5856,7 +5856,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fas fa-check"
-  }), _vm._v("\n      フォロー中\n    ")])]), _vm._v("\n  " + _vm._s(this.isFollowedBy) + "\n  フォロワー数: " + _vm._s(this.countFollowers) + "\n\n")]);
+  }), _vm._v("\n      フォロー中\n    ")])]), _vm._v("\n  " + _vm._s(this.isFollowedBy) + "\n\n")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

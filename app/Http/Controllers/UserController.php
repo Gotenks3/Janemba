@@ -18,7 +18,9 @@ class UserController extends Controller
     {
         // dd(1);
         // $user = User::find($id);
-        // dd($user->count_followers);
+        // $product = $user->products->get();
+        // dd($user->count_products);
+        // dd($user->count_follows);
         // dd(Auth::user());
         // dd($user->isFollowedBy(Auth::user()));
 
@@ -34,8 +36,8 @@ class UserController extends Controller
     // フォロー機能
     public function follow(Request $request, User $user)
     {
-        $user->follows()->detach($request->user()->id);
-        $user->follows()->attach($request->user()->id);
+        $user->followers()->detach($request->user()->id);
+        $user->followers()->attach($request->user()->id);
 
         return [
             'id' => $user->id,
@@ -45,7 +47,7 @@ class UserController extends Controller
 
     public function unfollow(Request $request, User $user)
     {
-        $user->follows()->detach($request->user()->id);
+        $user->followers()->detach($request->user()->id);
 
         return [
             'id' => $user->id,

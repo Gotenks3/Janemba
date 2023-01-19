@@ -17,7 +17,6 @@
       </button>
     </div>
     {{ this.isFollowedBy }}
-    フォロワー数: {{ this.countFollowers }}
 
   </div>
 </template>
@@ -32,7 +31,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    countFollowers: {
+    initialCountFollowers: {
       type: Number,
       default: 0,
     },
