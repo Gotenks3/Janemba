@@ -15,10 +15,13 @@
 
     <div class="w-full lg:w-3/6 px-4 mx-auto">
         <div>
+            @if( Auth::id() !== $user->id )
             <follow-component 
               :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))' 
-
+              :count-followers='@json($user->count_followers)' 
+              endpoint="{{ route('user.follow', ['user' => $user]) }}"
                />
+            @endif
         </div>
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-4">
             <div class="px-6">
@@ -44,7 +47,7 @@
                             <div class="mr-4 p-3 text-center">
                                 <a href="" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        10
+                                        {{ $user->count_followers }}
                                     </span>
                                     <span class="text-sm text-blueGray-400">フォロワー</span>
                                 </a>
@@ -54,7 +57,7 @@
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                         89
                                     </span>
-                                    <span class="text-sm text-blueGray-400">商品</span>
+                                    <span class="text-sm text-blueGray-400">出品数</span>
                                 </a>
                             </div>
                         </div>
@@ -88,9 +91,6 @@
                             <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
                                 {{ $user->content }}
                             </p>
-                            <a href="javascript:void(0);" class="font-normal text-pink-500">
-                                Show more
-                            </a>
                         </div>
                     </div>
                 </div>

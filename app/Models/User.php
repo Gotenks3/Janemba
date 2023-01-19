@@ -60,7 +60,6 @@ class User extends Authenticatable
         // 3: 接続元のid(product_id) 
         // 4: 接続先のid(user_id)　
         return $this->belongsToMany('App\Models\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
-        // return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
     }
 
     // フォローしているか判定
@@ -69,5 +68,11 @@ class User extends Authenticatable
         return $user
             ? (bool)$this->followers->where('id', $user->id)->count()
             : false;
+    }
+
+    // フォロワーの合計 --アクセサ
+    public function getCountFollowersAttribute(): int
+    {
+        return $this->followers->count();
     }
 }

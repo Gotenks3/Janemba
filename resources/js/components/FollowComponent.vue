@@ -1,12 +1,24 @@
 <template>
   <div>
-  
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-      <i class="fas fa-check">
-      </i>
-      フォローする
-    </button>
+    <div v-if="!isFollowedBy">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+        @click="follow">
+        <i class="fas fa-check">
+        </i>
+        フォローする
+      </button>
+    </div>
+    <div v-else="isFollowedBy">
+      <button class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-4 border border-blue-500 rounded"
+        @click="unfollow">
+        <i class="fas fa-check">
+        </i>
+        フォロー中
+      </button>
+    </div>
     {{ this.isFollowedBy }}
+    フォロワー数: {{ this.countFollowers }}
+
   </div>
 </template>
 
@@ -20,14 +32,38 @@ export default {
       type: Boolean,
       default: false,
     },
+    countFollowers: {
+      type: Number,
+      default: 0,
+    },
+    endpoint: {
+      type: String,
+    },
   },
   data() {
     return {
-      isFollowedBy: this.initialIsFollowedBy
+      isFollowedBy: this.initialIsFollowedBy,
+      countFollowers: this.initialCountFollowers,
     }
   },
-  // methods: {
-  // }
+  methods: {
+    async follow() {
+
+      const response = await axios.put(this.endpoint)
+
+      console.log(1)
+      this.isFollowedBy = true
+      this.countFollowers = response.data.countFollowers
+    },
+    async unfollow() {
+
+      const response = await axios.delete(this.endpoint)
+
+      console.log(2)
+      this.isFollowedBy = false
+      this.countFollowers = response.data.countFollowers
+    },
+  }
 };
 </script>
 

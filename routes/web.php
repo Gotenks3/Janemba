@@ -58,6 +58,12 @@ Route::prefix('product')->name('product.')->group(function () {
     Route::delete('/{product}/like', [ProductController::class, 'unlike'])->name('unlike')->middleware('auth');
 });
 
+// フォロー機能
+Route::prefix('user')->name('user.')->group(function () {
+    Route::put('/{user}/follow', [UserController::class, 'follow'])->name('follow')->middleware('auth');
+    Route::delete('/{user}/follow', [UserController::class, 'unfollow'])->name('unfollow')->middleware('auth');
+});
+
 //ユーザー詳細
 Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
 
