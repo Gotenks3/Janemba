@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeEmailController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,12 @@ Route::prefix('profile')->group(function(){
     // Route::get('checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     // Route::get('success', [CartController::class, 'success'])->name('cart.success');
     // Route::get('cancel', [CartController::class, 'cancel'])->name('cart.cancel');
+});
+
+// カート機能
+Route::prefix('product')->name('product.')->group(function () {
+    Route::put('/cart/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
+    Route::delete('/cart/reduce', [CartController::class, 'reduce'])->name('cart.reduce')->middleware('auth');
 });
 
 // いいね機能

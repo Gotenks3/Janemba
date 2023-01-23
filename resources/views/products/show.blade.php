@@ -96,7 +96,15 @@
                     </div>
                     <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
-                        <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">カートに追加</button>
+
+                        <div class="ml-4">
+                            <form action="{{ route('product.cart.add' )}}" method="post">
+                                @method('PUT')
+                                @csrf
+                                
+                                <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">カートに追加</button>
+                            </form>
+                        </div>
 
                         <like-component 
                         :initial-is-liked-by='@json($product->isLikedBy(Auth::user()))'
