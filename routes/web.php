@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeEmailController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,12 @@ use App\Http\Controllers\LikeController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Googleログイン
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('{provider}');
+    Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('{provider}.callback');
 });
 
 // マイページ

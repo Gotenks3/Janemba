@@ -35,8 +35,8 @@ class UserSeeder extends Seeder
                 'created_at' => '2021/01/01 11:11:11'
             ],
             [
-                'name' => 'バーダック',
-                'email' => 'd@d',
+                'name' => 'Googleログインテスト',
+                'email' => 'riku.murakami333@gmail.com',
                 'password' => Hash::make('rikuriku'),
                 'created_at' => '2021/01/01 11:11:11'
             ],
