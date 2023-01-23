@@ -55,7 +55,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="p-2 w-1/2 mx-auto">
+
+                    <div class="p-2 w-full">
                         <div class="relative">
                             <label for="category" class="leading-7 text-sm text-gray-600">カテゴリー</label>
                             <select name="category" id="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -70,11 +71,38 @@
                             </select>
                         </div>
                     </div>
+
+                    {{-- 在庫数(stock) --}}
                     <div class="p-2 w-full">
-                        <button type="button" onclick="location.href='{{ route('product.show',['product' => $product->id])}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
-                        <button class="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">商品を登録</button>
+                        <div class="w-1/6 relative flex justify-around">
+                            <input type="radio" id="type" name="type" value="1" checked>
+                            <label for="type">追加</label>
+                            <input type="radio" id="type" name="type" value="2">
+                            <label for="type">削減</label>
+                        </div>
                     </div>
 
+                    <div class="p-2 w-1/2 mx-auto">
+                        <div class="relative">
+                            <label for="current_quantity" class="leading-7 text-sm text-gray-600">現在の在庫数</label>
+                            <input type="hidden"  class="w-full bg-gray-300 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                            <div>{{ $quantity }}</div>
+                        </div>
+                    </div>
+
+                    <div class="p-2 w-1/2 mx-auto">
+                        <div class="relative">
+                            <label for="quantity" class="leading-7 text-sm text-gray-600">入出庫</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="100" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="p-2 w-full">
+                    <button type="button" onclick="location.href='{{ route('product.show',['product' => $product->id])}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                    <button class="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">商品を登録</button>
                 </div>
             </div>
         </div>

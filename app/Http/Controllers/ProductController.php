@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\PrimaryCategory;
+use App\Models\Stock;
 use App\Models\User;
 use App\Enums\ProductState;
 use App\Enums\ProductSelling;
@@ -55,6 +56,7 @@ class ProductController extends Controller
 
     public function store(ProductCreateRequest $request)
     {
+        // dd($request);
         $imageFile1 = $request->image1;
         $imageFile2 = $request->image2;
         $imageFile3 = $request->image3;
@@ -82,7 +84,7 @@ class ProductController extends Controller
         }
 
         try {
-            Product::create([
+            $product = Product::create([
                 'user_id' => Auth::id(),
                 'secondary_category_id' => $request->category,
                 'name' => $request->name,
@@ -94,6 +96,13 @@ class ProductController extends Controller
                 'state' => $request->state,
                 'price' => $request->price,
                 'is_selling' => $request->is_selling
+            ]);
+
+            Stock::create([
+                'product_id' => $product->id,
+                // createでは入庫専用だから type = 1
+                'type' => 1,
+                'quantity' => $request->quantity
             ]);
         } catch (\Exception $e) {
             $e->getMessage();
@@ -107,19 +116,23 @@ class ProductController extends Controller
 
     public function edit($product)
     {
-        $product = Product::findOrFail($product);
-
+        $product = Product::with('stock')->findOrFail($product);
+// dd($product);
         $status = ProductState::asSelectArray();
         $sell = ProductSelling::asSelectArray();
         $categories = PrimaryCategory::with('secondary')->get();
-
-        return view('products.edit', compact('product', 'status', 'sell', 'categories'));
+        $quantity = Stock::where('product_id', $product->id)
+            ->sum('quantity');
+        // dd($quantity);
+        return view('products.edit', compact('product', 'status', 'sell', 'categories', 'quantity'));
     }
 
     public function update(ProductUpdateRequest $request, $product)
     {
         $product = Product::findOrFail($product);
-
+        $stock = $product->stock;
+        // dd($stock);
+// dd($request);
         $imageFile1 = $request->image1;
         $imageFile2 = $request->image2;
         $imageFile3 = $request->image3;
@@ -164,6 +177,8 @@ class ProductController extends Controller
         }
 
         try {
+            // dd($product->id,$request->type,$request->quantity,$request);
+
             $product->fill([
                 'name' => $request->name,
                 'secondary_category_id' => $request->category,
@@ -176,6 +191,25 @@ class ProductController extends Controller
                 'price' => $request->price,
                 'is_selling' => $request->is_selling
             ])->save();
+
+            if($request->type == 1){
+                $newQuantity = $request->quantity;
+            }
+            if($request->type == 2){
+                $newQuantity = $request->quantity * -1;
+            }
+
+            // dd(1,$newQuantity);
+
+            Stock::create([
+                'product_id' => $product->id,
+                'type' => $request->type,
+                'quantity' => $newQuantity
+            ]);
+       
+            // dd(2);
+
+            
         } catch (\Exception $e) {
             $e->getMessage();
             session()->flash('flash_message', '更新が失敗しました');

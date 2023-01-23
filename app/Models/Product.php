@@ -31,6 +31,12 @@ class Product extends Model
         'is_selling'
     ];
 
+    // StockModelリレーション
+    public function stock()
+    {
+        return $this->hasOne('App\Models\Stock');
+    }
+
     //多対多のリレーション
     public function likes()
     {
@@ -45,7 +51,7 @@ class Product extends Model
     public function isLikedBy(?User $user): bool
     {
         return $user
-            ? (bool)$this->likes->where('id', $user->id)->count()
+            ? (bool) $this->likes->where('id', $user->id)->count()
             : false;
     }
 
