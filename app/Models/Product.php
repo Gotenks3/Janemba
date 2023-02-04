@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Cart;
 
 class Product extends Model
 {
@@ -35,6 +36,12 @@ class Product extends Model
     public function stock()
     {
         return $this->hasOne('App\Models\Stock');
+    }
+
+    // cartModelリレーション
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
 
     //多対多のリレーション

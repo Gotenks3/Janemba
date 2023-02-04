@@ -23,9 +23,9 @@ class StockSeeder extends Seeder
                 'created_at' => '2021/01/01 11:11:11'
             ],
             [
-                'product_id' => 1,
+                'product_id' => 2,
                 'type' => 1,
-                'quantity' => 22,
+                'quantity' => 20,
                 'created_at' => '2021/01/01 11:11:11'
             ],
         ]);
