@@ -46,9 +46,18 @@ class User extends Authenticatable
     /**
      * ユーザーからproductModelにアクセス
      */
+    // public function products()
+    // {
+    //     return $this->belongsToMany('App/Models/')->withPivot('cart');
+    // }
+    
+    /**
+     * ユーザーからproductModelにアクセス
+     */
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class, 'carts')
+        ->withPivot(['id', 'amount']); 
     }
 
     // 出品数合計 --アクセサ

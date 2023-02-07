@@ -8,7 +8,8 @@
             <div class="rounded-lg h-64 overflow-hidden">
                 {{-- Component受け渡しテスト --}}
                 {{-- <product-test-component :product='@json($product)'/> --}}
-
+                
+                <x-auth-flash-message status="session('status')" /> 
                 <!-- Slider main container -->
                 <div class="swiper">
                     <!-- Additional required wrapper -->
@@ -94,15 +95,24 @@
                         <span class="text-gray-500">サイズ</span>
                         <span class="ml-auto text-gray-900">M_1_PI</span>
                     </div>
+
+                    {{-- cart --}}
+                    <div class="flex">
+                        <div class="ml-4">
+                            <form action="{{ route('product.cart.add',['product' => $product->id])}}" method="post">
+                                @method('PUT')
+                                @csrf
+                                <label for="amount" class="leading-7 text-sm text-gray-600">数量:</label>
+                                <input type="number" id="amount" name="amount" value="1" min="1" max="100" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+
+                                <input type="hidden" name="product_id" value="{{ $product->id}}">
+                                <button type="submit" class="ml-4 text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-400 rounded">カートに追加</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="flex">
                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
-                        <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">カートに追加</button>
-
-                        <like-component 
-                        :initial-is-liked-by='@json($product->isLikedBy(Auth::user()))'
-                        :initial-count-likes='@json($product->count_likes)' 
-                        endpoint="{{ route('product.like', ['product' => $product]) }}"
-                         />
+                        <like-component :initial-is-liked-by='@json($product->isLikedBy(Auth::user()))' :initial-count-likes='@json($product->count_likes)' endpoint="{{ route('product.like', ['product' => $product]) }}" />
                     </div>
                 </div>
             </div>
