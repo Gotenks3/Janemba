@@ -6,23 +6,16 @@
 
     <x-auth-flash-message status="session('status')" />
 
-    @if (is_null($user))
-    <div class="w-full lg:w-3/6 px-4 mx-auto">
-        <h3>
-            ＊プロフィールが登録されていません。<br>
-        </h3>
-    </div>
-    @endif
-
     <div class="w-full lg:w-3/6 px-4 mx-auto">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             プロフィール情報
         </h2>
-        <div>
+        <div class="text-right">
             @if( Auth::id() !== $user->id )
             <follow-component :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))' :count-followers='@json($user->count_followers)' endpoint="{{ route('user.follow', ['user' => $user]) }}" />
             @endif
         </div>
+
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-4">
             <div class="px-6">
 
