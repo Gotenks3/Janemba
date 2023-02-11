@@ -65,20 +65,20 @@
                 </div>
                 <div class="text-center mt-6">
                     <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                        {{$user->nickname}}
+                        {{$user->profile->nickname}}
                     </h3>
                     <div class="mb-2 text-blueGray-600 mt-10">
 
                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                         @foreach(config('pref') as $pref_id => $name)
-                        @if ($pref_id === $user->prefecture)
+                        @if ($pref_id === $user->profile->prefecture)
                         {{ $name }}
                         @endif
                         @endforeach
                     </div>
                     <div class="mb-2 text-blueGray-600 mt-10">
                         <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                       年齢: {{ $user->age }}才
+                       年齢: {{ $user->profile->age }}才
                     </div>
                     <div class="mb-2 text-blueGray-600">
                         <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
@@ -89,7 +89,7 @@
                     <div class="flex flex-wrap justify-center">
                         <div class="w-full lg:w-9/12 px-4">
                             <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                                {{ $user->content }}
+                                {{ $user->profile->content }}
                             </p>
                         </div>
                     </div>

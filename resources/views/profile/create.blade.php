@@ -3,16 +3,17 @@
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            プロフィール登録
+        </h2>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
-
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                 <form action="{{ route('profile.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ Auth::id() }}" />
 
-                    <hr>
                     {{-- 名前、商品情報 --}}
                     <div class="-m-2">
                         <div class="p-2 w-1/2 mx-auto">

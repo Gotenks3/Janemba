@@ -14,21 +14,14 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        // profileからリレーションで繋いだUserのidとログインしているユーザーを比較
-        $profile = User::find(Auth::id())->profile;
-        // dd($profile->prefecture);
-        // dd((config('pref')));
-        // $a = GenderType::getValues();
-        // $x = array_keys(config('pref'));
-        // dd($a, $x);
-        return view('profile.index', compact('profile'));
+        $user = User::with('profile')->findOrFail(Auth::id());
+        
+        return view('profile.index', compact('user'));
     }
 
     public function create()
     {
-        // profileからリレーションで繋いだUserのidとログインしているユーザーを比較
         $profile = User::find(Auth::id())->profile;
-        // Enum -- 性別
         $gender = GenderType::asSelectArray();
 
         return view('profile.create', compact('profile', 'gender'));
@@ -56,8 +49,7 @@ class ProfileController extends Controller
         }
 
 
-        return redirect()->route('profile.index')
-            ->with(['message' => 'プロフィールを登録しました。', 'status' => 'info']);
+        return redirect()->route('home');
     }
 
     public function edit()

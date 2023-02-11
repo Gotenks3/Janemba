@@ -16,19 +16,8 @@ class UserController extends Controller
 
     public function show($id)
     {
-        // dd(1);
-        // $user = User::find($id);
-        // $product = $user->products->get();
-        // dd($user->count_products);
-        // dd($user->count_follows);
-        // dd(Auth::user());
-        // dd($user->isFollowedBy(Auth::user()));
-
         $user = User::with('profile')->findOrFail($id);
-        // dd($user);
         $gender = GenderType::asSelectArray();
-
-        // dd($profileShow);
 
         return view('user.show', compact('user', 'gender'));
     }

@@ -21,7 +21,7 @@ class CartController extends Controller
             $totalPrice += $product->price * $product->pivot->amount;
         }
 
-        return view('carts.index', compact('user', 'totalPrice'));
+        return view('carts.index', compact('user', 'products', 'totalPrice'));
     }
 
     public function add(Request $request, $product)
@@ -58,5 +58,14 @@ class CartController extends Controller
 
         return redirect()->route('product.show', $product->id)
             ->with(['message' => 'カートに追加しました。', 'status' => 'info']);
+    }
+
+    public function delete($id)
+    {
+        Cart::where('product_id', $id)
+        ->where('user_id', Auth::id())
+        ->delete();
+
+        return redirect()->route('product.cart.index');
     }
 }
