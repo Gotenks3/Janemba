@@ -10,14 +10,14 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 <section class="text-gray-600 body-font">
-                    <div class="container px-5 py-12 mx-auto flex flex-col bg-slate-50">
-                        <div class="lg:w-4/6 mx-auto border">
+                    <div class="container mx-auto flex flex-col bg-slate-50">
+                        <div class="lg:w-5/6 mx-auto border">
                             <div class="rounded-lg h-64 overflow-hidden">
 
                                 <x-auth-flash-message status="session('status')" />
                                 <!-- Slider main container -->
                                 <div class="swiper">
-                                    <!-- Additional required wrapper -->
+                                    <!-- Additional required  wrapper -->
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
 
