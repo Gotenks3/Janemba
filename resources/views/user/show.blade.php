@@ -3,6 +3,7 @@
 @section('content')
 
 <section class="pt-4 bg-blueGray-50">
+
     <x-auth-flash-message status="session('status')" />
 
     @if (is_null($user))
@@ -14,13 +15,12 @@
     @endif
 
     <div class="w-full lg:w-3/6 px-4 mx-auto">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            プロフィール情報
+        </h2>
         <div>
             @if( Auth::id() !== $user->id )
-            <follow-component 
-              :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))' 
-              :count-followers='@json($user->count_followers)' 
-              endpoint="{{ route('user.follow', ['user' => $user]) }}"
-               />
+            <follow-component :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))' :count-followers='@json($user->count_followers)' endpoint="{{ route('user.follow', ['user' => $user]) }}" />
             @endif
         </div>
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-4">
@@ -78,7 +78,7 @@
                     </div>
                     <div class="mb-2 text-blueGray-600 mt-10">
                         <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                       年齢: {{ $user->profile->age }}才
+                        年齢: {{ $user->profile->age }}才
                     </div>
                     <div class="mb-2 text-blueGray-600">
                         <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
@@ -98,17 +98,6 @@
             </div>
         </div>
     </div>
-    <footer class="relative  pt-8 pb-6 mt-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap items-center md:justify-between justify-center">
-                <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-                    <div class="text-sm text-blueGray-500 font-semibold py-1">
-                        Made with <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </section>
 
 

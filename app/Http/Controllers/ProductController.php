@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function show($product)
     {
         $product = Product::findOrFail($product);
-
+        
         $product_sell = ProductSelling::asSelectArray($product->is_selling);
 
         // ユーザー情報取得
@@ -221,7 +221,7 @@ class ProductController extends Controller
         }
 
         return redirect()
-            ->route('product.index')
+            ->route('home')
             ->with(['message' => '商品情報を更新しました。', 'status' => 'info']);
     }
 

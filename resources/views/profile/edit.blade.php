@@ -14,7 +14,6 @@
                 <form action="{{ route('profile.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
 
-
                     {{-- 名前、商品情報 --}}
                     <div class="-m-2">
                         <div class="p-2 w-1/2 mx-auto">
@@ -39,7 +38,6 @@
                             </div>
                         </div>
 
-
                         {{-- 画像 --}}
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
@@ -51,7 +49,6 @@
                                 <input type="file" name="icon" value="ブロリー" accept=“image/png,image/jpeg,image/jpg” class="mb-12">
                             </div>
                         </div>
-
 
                         {{-- 都道府県 --}}
                         <div class="p-2 w-1/2 mx-auto">
@@ -69,7 +66,6 @@
                             </div>
                         </div>
 
-
                         {{-- 性別 --}}
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
@@ -86,7 +82,7 @@
                             </div>
                         </div>
 
-                        {{-- 性別 --}}
+                        {{-- 年齢 --}}
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
                                 <div class="flex">

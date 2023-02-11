@@ -31,6 +31,11 @@ class Product extends Model
         'price',
         'is_selling'
     ];
+    
+    // UsersModelのリレーション
+    public function users() {
+        return $this->belongsToMany('App\Models\User');
+    }
 
     // StockModelリレーション
     public function stock()

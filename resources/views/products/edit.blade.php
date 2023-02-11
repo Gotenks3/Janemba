@@ -7,6 +7,9 @@
         @method('PUT')
         @csrf
         <div class="container px-5 py-24 mx-auto">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                商品編集
+            </h2>
             <div class="flex flex-col text-center w-full mb-12">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">編集画面</h1>
             </div>
@@ -63,7 +66,7 @@
                                 @foreach($categories as $category)
                                 <optgroup label="{{ $category->name }}">
                                     @foreach($category->secondary as $secondary)
-                                    <option value="{{ $secondary->id}}">
+                                    <option value="{{ $secondary->id}}" @if ($secondary->id === $product->secondary_category_id) selected @endif>
                                         {{ $secondary->name }}
                                     </option>
                                     @endforeach
@@ -105,12 +108,6 @@
             </div>
         </div>
     </form>
-
-    {{-- <form class="delete" method="delete" action="{{ route('product.destroy', ['product' => $product->id]) }}">
-    @csrf
-    @method('delete')
-    <input type="submit" value="削除" class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-800 rounded">
-    </form> --}}
 
     <delete-alert-component :product='@json($product)' endpoint="{{ route('product.destroy', ['product' => $product->id]) }}" />
 

@@ -3,13 +3,14 @@
 @section('content')
 
 <section class="text-gray-600 body-font">
-    <div class="container px-5 py-12 mx-auto flex flex-col border-2 bg-slate-50">
-        <div class="lg:w-4/6 mx-auto border">
+    <div class="container px-5 py-12 mx-auto flex flex-col bg-slate-50">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            商品詳細
+        </h2>
+        <div class="lg:w-4/6 mx-auto">
             <div class="rounded-lg h-64 overflow-hidden">
-                {{-- Component受け渡しテスト --}}
-                {{-- <product-test-component :product='@json($product)'/> --}}
-                
-                <x-auth-flash-message status="session('status')" /> 
+
+                <x-auth-flash-message status="session('status')" />
                 <!-- Slider main container -->
                 <div class="swiper">
                     <!-- Additional required wrapper -->
@@ -56,7 +57,7 @@
                     <a href="{{ route('user.show', ['id' => $user->profile->id]) }}">
                         <div class="flex justify-center">
                             @if (!is_null($user->profile->icon))
-                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-contain" style="border-radius: 50%; width: 200px; height: 200px;"></img>
+                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;"></img>
                             @else
                             <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
                             @endif
@@ -92,8 +93,10 @@
 
                     </div>
                     <div class="flex border-t border-b mb-6 border-gray-200 py-2">
-                        <span class="text-gray-500">サイズ</span>
-                        <span class="ml-auto text-gray-900">M_1_PI</span>
+                        <span class="text-gray-500">カテゴリー</span>
+                        <span class="ml-auto text-gray-900">
+                            {{ $product->category->name }}
+                        </span>
                     </div>
 
                     {{-- cart --}}
