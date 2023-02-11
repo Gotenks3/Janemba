@@ -19,23 +19,28 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $products = Product::all();
-
-        return view('products.index', compact('products'));
+        $this->middleware('auth');
     }
+
+    // public function index()
+    // {
+    //     $products = Product::all();
+
+    //     return view('home', compact('products'));
+    // }
 
     public function show($product)
     {
         $product = Product::findOrFail($product);
-        // dd($product);
-        // $x = $product->isLikedBy(Auth::user());
-        // dd($product->count_likes);
-        // dd($x,$product);
 
         $product_sell = ProductSelling::asSelectArray($product->is_selling);
-        // dd($x, $product->is_selling);
 
         // ユーザー情報取得
         $user = User::where('id', $product->user_id)->with('profile')->first();

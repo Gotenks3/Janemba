@@ -19,9 +19,8 @@ use App\Http\Controllers\LikeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 初期ページ
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Googleログイン
 Route::prefix('login')->name('login.')->group(function () {
@@ -51,15 +50,9 @@ Route::get("reset/{token}", [ChangeEmailController::class, 'reset'])->name('rese
 Route::prefix('profile')->group(function(){
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
-    // Product-showから遷移
     Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
     Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('update', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::post('add', [CartController::class, 'add'])->name('cart.add');   
-    // Route::post('delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
-    // Route::get('checkout', [CartController::class, 'checkout'])->name('cart.checkout');
-    // Route::get('success', [CartController::class, 'success'])->name('cart.success');
-    // Route::get('cancel', [CartController::class, 'cancel'])->name('cart.cancel');
 });
 
 // カート機能
@@ -87,6 +80,4 @@ Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('product', ProductController::class)->middleware('auth');
+Route::resource('product', ProductController::class);

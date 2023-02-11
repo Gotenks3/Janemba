@@ -44,7 +44,7 @@
                 </button>
 
                 <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
-                    <button type="button" onclick="location.href='{{ route('home')}}'">HOME</button>
+                    <button type="button" onclick="location.href='{{ route('home')}}'">ホーム</button>
                 </li>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -57,13 +57,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">新規登録</a>
                         </li>
                         @endif
                         @else
@@ -84,11 +84,11 @@
 
                                 {{-- mypage --}}
                                 <a class="dropdown-item" href="{{ route('mypage') }}">
-                                    Mypage
+                                    マイページ
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    ログアウト
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
