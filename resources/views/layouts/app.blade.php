@@ -45,6 +45,10 @@
                 <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                     <button type="button" onclick="location.href='{{ route('home')}}'">商品一覧</button>
                 </li>
+                
+                <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                    <button type="button" onclick="location.href='{{ route('product.create')}}'">出品</button>
+                </li>
 
                 <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                     <button type="button" onclick="location.href='{{ route('product.cart.index')}}'">
@@ -80,7 +84,6 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                {{-- mypage --}}
                                 <a class="dropdown-item" href="{{ route('mypage') }}">
                                     マイページ
                                 </a>

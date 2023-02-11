@@ -115,7 +115,7 @@ class ProductController extends Controller
         }
 
 
-        return redirect()->route('product.index')
+        return redirect()->route('home')
             ->with(['message' => '商品を登録しました。', 'status' => 'info']);
     }
 
