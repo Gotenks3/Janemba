@@ -1,50 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <x-auth-flash-message status="session('status')" />
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    <div>
-                        <h1>product</h1>
-                        <button type="button" onclick="location.href='{{ route('product.index')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">一覧</button>
-                        <button type="button" onclick="location.href='{{ route('product.create')}}'" class="bg-blue-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">作成</button>
-                    </div>
-
-                    <div class="swiper mt-10">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                            ...
+    <div class="py-12">
+    <x-auth-flash-message status="session('status')" /> 
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <section class="text-gray-600 body-font">
+                        <div class="container px-5 mx-auto">
+                            <div class="flex flex-wrap">
+                                @foreach ($products as $product )
+                                <div class="lg:w-1/3 md:w-1/2 p-4 w-full border border-black ">
+                                    <div class=" p-2 md:p-4">
+                                        <a href="{{ route('product.show',['product' => $product->id]) }}">
+                                            @if ($product->is_selling === App\Enums\ProductSelling::Sell)
+                                            <button class="shadow-lg bg-blue-500 shadow-blue-500/50 text-white rounded px-1 py-1">販売中</button>
+                                            @else
+                                            <button class="shadow-lg bg-red-500 shadow-red-500/50 text-white rounded px-1 py-1">停止中</button>
+                                            @endif
+                                            <div class="border border-zinc-300 rounded-md p-2 md:p-4">
+                                                <img src="{{ asset('storage/products/' . $product->image1) }}" alt="{{ $product->image1 }}">
+                                                <div class="text-gray-600 flex justify-center mt-3 ">{{ $product->name }}</div>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h3 class="text-gray-700 flex justify-center text-sm tracking-widest title-font mb-1">{{ number_format($product->price) }}円(税込)</h3>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
-                        <!-- If we need pagination -->
-                        <div class="swiper-pagination"></div>
-
-                        <!-- If we need navigation buttons -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-
-                        <!-- If we need scrollbar -->
-                        <div class="swiper-scrollbar"></div>
-                    </div>
-
+                    </section>
                 </div>
-            </div>
-
-
-            <div id="app">
-                <example-component></example-component>
             </div>
         </div>
     </div>
-</div>
 
-
-@endsection
+    @endsection
