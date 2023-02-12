@@ -5856,7 +5856,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "fas fa-check"
-  }), _vm._v("\n      フォロー中\n    ")])]), _vm._v("\n  " + _vm._s(this.isFollowedBy) + "\n\n")]);
+  }), _vm._v("\n      フォロー中\n    ")])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

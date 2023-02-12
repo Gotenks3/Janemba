@@ -9,7 +9,7 @@
     @if (is_null($product->image1))
     <div> <img src="{{ asset('storage/products/'  . 'kamera.png') }}" alt="no-image" class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"></div>
     @else
-    <div> <img src="{{ asset('storage/products/'  . $product->image1) }}" alt="{{ $product->image1 }}" class="lg:w-64 md:w-3/6 w-4/6 mb-10 object-cover object-center rounded" style="width:120px; hight: 120px;"></div>
+    <div> <img src="{{ asset('storage/products/'  . $product->image1) }}" alt="{{ $product->image1 }}" class="lg:w-64 md:w-3/6 w-4/6 mb-10 object-cover object-center rounded" style="width:256px; hight: 144px;"></div>
     @endif
     <input type="file" name="image1" value="画像を変更する" accept=“image/png,image/jpeg,image/jpg” class="mb-12">
     {{-- 画像２枚目 --}}

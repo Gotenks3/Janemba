@@ -48,7 +48,7 @@
                             <div class="lg:mr-4 p-3 text-center">
                                 <a href="" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        {{ $user->count_products }}
+                                        {{ $product_count }}
                                     </span>
                                     <span class="text-sm text-blueGray-400">出品数</span>
                                 </a>

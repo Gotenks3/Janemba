@@ -14,7 +14,6 @@
             <div class="px-6">
                 <div class="flex flex-wrap justify-center">
 
-
                     <div class="w-full px-4 flex justify-center">
                         <div class="relative">
                             <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;">
@@ -25,7 +24,7 @@
                             <div class="mr-4 p-3 text-center">
                                 <a href="" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        22
+                                    {{ $user->count_follows }}
                                     </span>
                                     <span class="text-sm text-blueGray-400">フォロー</span>
                                 </a>
@@ -33,7 +32,7 @@
                             <div class="mr-4 p-3 text-center">
                                 <a href="" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        10
+                                    {{ $user->count_followers }}
                                     </span>
                                     <span class="text-sm text-blueGray-400">フォロワー</span>
                                 </a>
@@ -41,9 +40,9 @@
                             <div class="lg:mr-4 p-3 text-center">
                                 <a href="" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        89
+                                        {{ $product_count }}
                                     </span>
-                                    <span class="text-sm text-blueGray-400">商品</span>
+                                    <span class="text-sm text-blueGray-400">商品数</span>
                                 </a>
                             </div>
                         </div>

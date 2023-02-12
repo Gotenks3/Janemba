@@ -48,22 +48,16 @@ class User extends Authenticatable
      */
     // public function products()
     // {
-    //     return $this->belongsToMany('App/Models/')->withPivot('cart');
+    //     return $this->belongsToMany('App\Models\Product','carts');
     // }
-    
+
     /**
      * ユーザーからproductModelにアクセス
      */
     public function products()
     {
         return $this->belongsToMany(Product::class, 'carts')
-        ->withPivot(['id', 'amount']); 
-    }
-
-    // 出品数合計 --アクセサ
-    public function getCountProductsAttribute(): int
-    {
-        return $this->products->count();
+            ->withPivot(['id', 'amount']);
     }
 
     /**
@@ -98,7 +92,7 @@ class User extends Authenticatable
     public function isFollowedBy(?User $user): bool
     {
         return $user
-            ? (bool)$this->followers->where('id', $user->id)->count()
+            ? (bool) $this->followers->where('id', $user->id)->count()
             : false;
     }
 

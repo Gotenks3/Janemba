@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 use App\Enums\GenderType;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +19,9 @@ class UserController extends Controller
     {
         $user = User::with('profile')->findOrFail($id);
         $gender = GenderType::asSelectArray();
+        $product_count = Product::where('user_id', Auth::id())->count();
 
-        return view('user.show', compact('user', 'gender'));
+        return view('user.show', compact('user', 'gender', 'product_count'));
     }
 
     // フォロー機能

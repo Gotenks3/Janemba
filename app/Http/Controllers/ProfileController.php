@@ -6,6 +6,7 @@ use App\Enums\GenderType;
 use App\Http\Requests\ProfileCreateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use App\Models\Product;
 use App\Models\Profile;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,9 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::with('profile')->findOrFail(Auth::id());
+        $product_count = Product::where('user_id', Auth::id())->count();
         
-        return view('profile.index', compact('user'));
+        return view('profile.index', compact('user', 'product_count'));
     }
 
     public function create()

@@ -103,7 +103,7 @@
                                     <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
 
-                                <input type="number" id="quantity" name="quantity" min="1" max="100" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="number" id="quantity" value="{{ old('quantity') }}" name="quantity" min="1" max="100" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
 
@@ -133,7 +133,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">商品を登録</button>
+                        <div class="flex justify-center mt-16">
+                            <button type="button" onclick="location.href='{{ route('home')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                            <button class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">商品を登録</button>
+                        </div>
                     </div>
                 </form>
             </div>

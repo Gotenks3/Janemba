@@ -31,9 +31,10 @@ class Product extends Model
         'price',
         'is_selling'
     ];
-    
+
     // UsersModelのリレーション
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany('App\Models\User');
     }
 
