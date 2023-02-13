@@ -16,7 +16,7 @@
 
                                 <x-auth-flash-message status="session('status')" />
                                 <!-- Slider main container -->
-                                <div class="swiper">
+                                <div class="swiper-container">
                                     <!-- Additional required  wrapper -->
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
@@ -134,4 +134,48 @@
         </div>
     </div>
 </div>
+
+<div class="swiper-container">
+    <!-- 全スライドをまとめるラッパー -->
+    <div class="swiper-wrapper">
+        <!-- 各スライド -->
+        <div class="swiper-slide"><img src="https://mittaniblog.com/wp/wp-content/uploads/2020/07/rabbit3.jpg"></div>
+        <div class="swiper-slide"><img src="https://mittaniblog.com/wp/wp-content/uploads/2020/07/rabbit2.jpg"></div>
+        <div class="swiper-slide"><img src="https://mittaniblog.com/wp/wp-content/uploads/2020/07/rabbit.jpg"></div>
+    </div><!-- ページネーション（※省略可） -->
+    <div class="swiper-pagination"></div><!-- ナビゲーションボタン（※省略可） -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div><!-- スクロールバー（※省略可） -->
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var mySwiper = new Swiper(".swiper-container", {
+            // オプション設定
+            loop: true, // ループ
+            speed: 600, // 切り替えスピード(ミリ秒)。
+            slidesPerView: 1, // １スライドの表示数
+            spaceBetween: 0, // スライドの余白(px)
+            direction: "horizontal", // スライド方向
+            effect: "coverflow", // スライド効果 ※ここを変更
+
+            // スライダーの自動再生設定
+            autoplay: {
+                delay: 3000, // スライドが切り替わるまでの時間(ミリ秒)
+                stopOnLast: false, // 自動再生の停止なし
+                disableOnInteraction: true, // ユーザー操作後の自動再生停止
+            },
+
+            // ページネーションを有効化
+            pagination: {
+                el: ".swiper-pagination",
+            },
+
+            // ナビゲーションを有効化
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+</script>
 @endsection
