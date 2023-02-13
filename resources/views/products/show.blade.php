@@ -11,8 +11,8 @@
             <div class="p-6 text-gray-900">
                 <section class="text-gray-600 body-font">
                     <div class="container mx-auto flex flex-col bg-slate-50">
-                        <div class="lg:w-5/6 mx-auto border">
-                            <div class="rounded-lg h-64 overflow-hidden">
+                        <div class="lg:w-4/6 md:w-1/2 p-4 w-full mx-auto border">
+                            <div class="rounded-lg overflow-hidden">
 
                                 <x-auth-flash-message status="session('status')" />
                                 <!-- Slider main container -->
@@ -23,24 +23,24 @@
 
                                         {{-- 画像１枚目 --}}
                                         <div class="swiper-slide">
-                                            <img alt="content" class="object-contain" src="{{ asset('storage/products/'  . $product->image1) }}">
+                                            <img alt="content" class="object-fill object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image1) }}">
                                         </div>
                                         {{-- 画像２枚目 --}}
                                         @if (isset($product->image2))
                                         <div class="swiper-slide">
-                                            <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image2) }}">
+                                            <img alt="content" class="object-fill object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image2) }}">
                                         </div>
                                         @endif
                                         {{-- 画像３枚目 --}}
                                         @if (isset($product->image3))
                                         <div class="swiper-slide">
-                                            <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image3) }}">
+                                            <img alt="content" class="object-fill object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image3) }}">
                                         </div>
                                         @endif
                                         {{-- 画像４枚目 --}}
                                         @if (isset($product->image4))
                                         <div class="swiper-slide">
-                                            <img alt="content" class="object-cover object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image4) }}">
+                                            <img alt="content" class="object-fill object-center h-full w-full" src="{{ asset('storage/products/'  . $product->image4) }}">
                                         </div>
                                         @endif
 
@@ -57,23 +57,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-col sm:flex-row mt-10">
-                                <div class="sm:w-1/3  sm:pr-4 sm:py-4">
-                                    <a href="{{ route('user.show', ['id' => $user->profile->id]) }}">
-                                        <div class="flex justify-center">
-                                            @if (!is_null($user->profile->icon))
-                                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;"></img>
-                                            @else
-                                            <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
-                                            @endif
-                                        </div>
-                                    </a>
-
-                                    <div class="flex flex-col items-center text-center justify-center">
-                                        <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $user->profile->nickname }}</h2>
-                                        <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                                        <p class="text-base">{{ $user->profile->content }}</p>
-                                    </div>
-                                </div>
+                                
                                 <div class="lg:w-4/6 w-full px-4  lg:py-6 mb-6 lg:mb-0">
                                     <h2 class="text-sm title-font text-gray-500 tracking-widest">商品名</h2>
                                     <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ $product->name }}</h1>
@@ -104,7 +88,7 @@
                                     </div>
 
                                     {{-- cart --}}
-                                    <div class="flex">
+                                    <div class="flex justify-center mb-4">
                                         <div class="ml-4">
                                             <form action="{{ route('product.cart.add',['product' => $product->id])}}" method="post">
                                                 @method('PUT')
@@ -117,9 +101,27 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="flex">
+                                    <div class="flex justify-center">
                                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
                                         <like-component :initial-is-liked-by='@json($product->isLikedBy(Auth::user()))' :initial-count-likes='@json($product->count_likes)' endpoint="{{ route('product.like', ['product' => $product]) }}" />
+                                    </div>
+                                </div>
+
+                                <div class="sm:w-1/3  sm:pr-4 sm:py-4">
+                                    <a href="{{ route('user.show', ['id' => $user->profile->id]) }}">
+                                        <div class="flex justify-center">
+                                            @if (!is_null($user->profile->icon))
+                                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;"></img>
+                                            @else
+                                            <img src="{{ asset('storage/products/'  . 'gozita.jpeg') }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 150px; height: 150px;"></img>
+                                            @endif
+                                        </div>
+                                    </a>
+
+                                    <div class="flex flex-col items-center text-center justify-center">
+                                        <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $user->profile->nickname }}</h2>
+                                        <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                                        <p class="text-base">{{ $user->profile->content }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -135,22 +137,9 @@
     </div>
 </div>
 
-<div class="swiper-container">
-    <!-- 全スライドをまとめるラッパー -->
-    <div class="swiper-wrapper">
-        <!-- 各スライド -->
-        <div class="swiper-slide"><img src="https://mittaniblog.com/wp/wp-content/uploads/2020/07/rabbit3.jpg"></div>
-        <div class="swiper-slide"><img src="https://mittaniblog.com/wp/wp-content/uploads/2020/07/rabbit2.jpg"></div>
-        <div class="swiper-slide"><img src="https://mittaniblog.com/wp/wp-content/uploads/2020/07/rabbit.jpg"></div>
-    </div><!-- ページネーション（※省略可） -->
-    <div class="swiper-pagination"></div><!-- ナビゲーションボタン（※省略可） -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div><!-- スクロールバー（※省略可） -->
-</div>
-
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        var mySwiper = new Swiper(".swiper-container", {
+<div is="script">
+var mySwiper = new Swiper(".swiper-container", {
             // オプション設定
             loop: true, // ループ
             speed: 600, // 切り替えスピード(ミリ秒)。
@@ -158,13 +147,6 @@
             spaceBetween: 0, // スライドの余白(px)
             direction: "horizontal", // スライド方向
             effect: "coverflow", // スライド効果 ※ここを変更
-
-            // スライダーの自動再生設定
-            autoplay: {
-                delay: 3000, // スライドが切り替わるまでの時間(ミリ秒)
-                stopOnLast: false, // 自動再生の停止なし
-                disableOnInteraction: true, // ユーザー操作後の自動再生停止
-            },
 
             // ページネーションを有効化
             pagination: {
@@ -177,5 +159,14 @@
                 prevEl: ".swiper-button-prev",
             },
         });
-</script>
+</div>
+
+<div is="style">
+.swiper-container {
+    height: 300px;
+  }
+
+</div>
+    
+
 @endsection
