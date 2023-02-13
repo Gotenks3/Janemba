@@ -8,7 +8,7 @@
 
     <div class="w-full lg:w-3/6 px-4 mx-auto">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            プロフィール情報
+            出品者情報
         </h2>
         <div class="text-right">
             @if( Auth::id() !== $user->id )
@@ -23,7 +23,7 @@
 
                     <div class="w-full px-4 flex justify-center">
                         <div class="relative">
-                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;">
+                            <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="icon" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;">
                         </div>
                     </div>
                     <div class="w-full px-4 text-center mt-6">

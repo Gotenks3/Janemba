@@ -121,12 +121,10 @@
                         <div class="flex justify-center mt-16">
 
                             <button type="button" onclick="location.href='{{ route('product.show',['product' => $product->id])}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
-                            <button class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">商品を登録</button>
+                            <button class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">更新する</button>
                         </div>
                     </div>
                 </form>
-                
-
             </div>
         </div>
     </div>

@@ -66,7 +66,8 @@
                                         <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
                                         <a class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Details</a>
                                     </div>
-                                    <p class="leading-relaxed mb-4">{{ $product->content }}</p>
+                                    <h2 class="text-sm title-font text-gray-500 tracking-widest">商品情報</h2>
+                                    <p class="leading-relaxed mb-4 text-gray-900">{{ $product->content }}</p>
                                     <div class="flex border-t border-gray-200 py-2">
                                         <span class="text-gray-500">商品の状態</span>
                                         <span class="ml-auto text-gray-900">
@@ -108,7 +109,9 @@
                                 </div>
 
                                 <div class="sm:w-1/3  sm:pr-4 sm:py-4">
-                                    <a href="{{ route('user.show', ['id' => $user->profile->id]) }}">
+                                    @if ($user->profile)
+                                    <h2 class="text-sm title-font text-gray-500 tracking-widest mb-3 text-center">出品者情報</h2>
+                                    <a href="{{ route('user.show', ['id' => $user->id]) }}">
                                         <div class="flex justify-center">
                                             @if (!is_null($user->profile->icon))
                                             <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;"></img>
@@ -117,12 +120,14 @@
                                             @endif
                                         </div>
                                     </a>
-
                                     <div class="flex flex-col items-center text-center justify-center">
                                         <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">{{ $user->profile->nickname }}</h2>
                                         <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                                         <p class="text-base">{{ $user->profile->content }}</p>
                                     </div>
+                                    @else
+                                    プロフィールが登録されていません。
+                                    @endif
                                 </div>
                             </div>
                         </div>
