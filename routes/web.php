@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeEmailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Mypage\UserProductController;
 use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,13 @@ Route::prefix('product')->name('product.')->group(function () {
 Route::prefix('user')->name('user.')->group(function () {
     Route::put('/{user}/follow', [UserController::class, 'follow'])->name('follow')->middleware('auth');
     Route::delete('/{user}/follow', [UserController::class, 'unfollow'])->name('unfollow')->middleware('auth');
+});
+
+// ログインユーザーの商品一覧
+Route::prefix('user')->name('user.')->group(function () {
+    Route::prefix('product')->name('product.')->group(function () {
+        Route::get('/index', [UserProductController::class, 'index'])->name('index')->middleware('auth');
+    });
 });
 
 //ユーザー詳細

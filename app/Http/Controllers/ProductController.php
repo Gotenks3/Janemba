@@ -112,10 +112,12 @@ class ProductController extends Controller
             ->with(['message' => '商品を登録しました。', 'status' => 'info']);
     }
 
-    public function edit($product)
-    {
-        $product = Product::with('stock')->findOrFail($product);
-// dd($product);
+    public function edit($id)
+    {        
+        $product = Product::with('stock')->findOrFail($id);
+
+        $this->authorize('update', $product);
+
         $status = ProductState::asSelectArray();
         $sell = ProductSelling::asSelectArray();
         $categories = PrimaryCategory::with('secondary')->get();
