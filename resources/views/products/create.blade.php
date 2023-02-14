@@ -53,6 +53,7 @@
                                 </div>
 
                                 <select name="is_selling" id="is_selling" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <option value="" hidden selected></option>
                                     @foreach($sell as $key => $value)
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -69,6 +70,7 @@
                                     <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
                                 <select name="state" id="state" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <option value="" hidden selected></option>
                                     @foreach($status as $key => $value)
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -84,6 +86,7 @@
                                 </div>
 
                                 <select name="category" id="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <option value="" hidden selected></option>
                                     @foreach($categories as $category)
                                     <optgroup label="{{ $category->name }}">
                                         @foreach($category->secondary as $secondary)
