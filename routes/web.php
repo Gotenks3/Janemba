@@ -44,8 +44,6 @@ Route::prefix('email')->group(function(){
 // 新規メールアドレスに更新
 Route::get("reset/{token}", [ChangeEmailController::class, 'reset'])->name('reset');
 
-
-
 // プロフィール
 Route::prefix('profile')->group(function(){
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
@@ -59,7 +57,7 @@ Route::prefix('profile')->group(function(){
 Route::prefix('product')->name('product.')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
     Route::put('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
-    Route::delete('/cart/{product}/reduce', [CartController::class, 'reduce'])->name('cart.reduce')->middleware('auth');
+    Route::post('/cart/delete/{product}', [CartController::class, 'delete'])->name('cart.delete')->middleware('auth');
 });
 
 // いいね機能

@@ -29,17 +29,10 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
-    // public function index()
-    // {
-    //     $products = Product::all();
-
-    //     return view('home', compact('products'));
-    // }
-
     public function show($product)
     {
         $product = Product::findOrFail($product);
-
+        
         $product_sell = ProductSelling::asSelectArray($product->is_selling);
 
         // ユーザー情報取得
@@ -115,7 +108,7 @@ class ProductController extends Controller
         }
 
 
-        return redirect()->route('product.index')
+        return redirect()->route('home')
             ->with(['message' => '商品を登録しました。', 'status' => 'info']);
     }
 
@@ -221,7 +214,7 @@ class ProductController extends Controller
         }
 
         return redirect()
-            ->route('product.index')
+            ->route('home')
             ->with(['message' => '商品情報を更新しました。', 'status' => 'info']);
     }
 

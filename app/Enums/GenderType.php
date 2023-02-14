@@ -30,7 +30,7 @@ final class GenderType extends Enum
             case self::WOMAN:
                 return '女性';
             case self::OTHER:
-                return 'その他(非公開)';
+                return '非公開';
                 brake;
             default:
                 return self::getKey($value);

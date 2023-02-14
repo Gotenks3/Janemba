@@ -1,1 +1,46 @@
-a
+@extends('layouts.app')
+
+@section('content')
+
+  <div class="py-12">
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            カート一覧
+        </h2>
+          <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+              <div class="p-6 bg-white border-b border-gray-200">
+                  @if (count($products) > 0)
+                    @foreach ($products as $product )
+                      <div class="mb-2 md:flex md:items-center">
+                        <div class="md:w-3/12">
+                            <img alt="content" class="object-contain" src="{{ asset('storage/products/'  . $product->image1) }}">
+                        </div>
+                        <div class="md:w-4/12 md:ml-2">{{ $product->name }}</div>
+                        <div class="flex justify-around md:w-3/12">
+                          <div>{{ $product->pivot->amount }}個</div>
+                          <div>{{ number_format($product->pivot->amount * $product->price )}}<span class="text-sm text-gray-700">円(税込)</span></div>
+                        </div>
+                        <div class="md:w-2/12">
+                          <form method="post" action="{{route('product.cart.delete', ['product' => $product->id ])}}">
+                            @csrf
+                            <button>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    @endforeach
+                    <div class="my-2">
+                      小計: {{ number_format($totalPrice)}}<span class="text-sm text-gray-700">円(税込)</span>
+                    </div>
+                  @else
+                    カートに商品が入っていません。
+                  @endif
+              </div>
+          </div>
+      </div>
+  </div>
+
+@endsection

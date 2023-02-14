@@ -18,7 +18,7 @@ class ChangeEmailController extends Controller
         $user = User::findOrFail(Auth::id());
         // $user = User::select('id', 'email')->get();
         // dd($user);
-        return view('emails.index', compact('user'));
+        return view('email.index', compact('user'));
     }
 
     public function sendChangeEmailLink(Request $request)
@@ -41,7 +41,7 @@ class ChangeEmailController extends Controller
 
         $email_reset->sendEmailResetNotification($token);
 
-        return redirect()->route('home')
+        return redirect()->route('email')
             ->with(['message' => '確認メールを送信しました。' , 'status' => 'info']);
     }
 

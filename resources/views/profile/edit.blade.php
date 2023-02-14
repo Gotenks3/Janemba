@@ -3,6 +3,9 @@
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            プロフィール編集
+        </h2>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
 
@@ -11,7 +14,6 @@
                 <form action="{{ route('profile.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
 
-                    <hr>
                     {{-- 名前、商品情報 --}}
                     <div class="-m-2">
                         <div class="p-2 w-1/2 mx-auto">
@@ -36,7 +38,6 @@
                             </div>
                         </div>
 
-
                         {{-- 画像 --}}
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
@@ -44,11 +45,10 @@
                                     <label for="icon" class="leading-7 text-sm text-gray-600">アイコン画像</label>
                                     <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
-                                    <div> <img src="{{ asset('storage/profiles/'  . $profile->icon) }}" alt="{{ $profile->icon }}" class="lg:w-64 md:w-3/6 w-4/6 mb-10 object-cover object-center rounded"></div>
-                                    <input type="file" name="icon" value="ブロリー" accept=“image/png,image/jpeg,image/jpg” class="mb-12">
+                                <div> <img src="{{ asset('storage/profiles/'  . $profile->icon) }}" alt="{{ $profile->icon }}" class="lg:w-64 md:w-3/6 w-4/6 mb-10 object-cover object-center rounded"></div>
+                                <input type="file" name="icon" value="ブロリー" accept=“image/png,image/jpeg,image/jpg” class="mb-12">
                             </div>
                         </div>
-
 
                         {{-- 都道府県 --}}
                         <div class="p-2 w-1/2 mx-auto">
@@ -66,7 +66,6 @@
                             </div>
                         </div>
 
-
                         {{-- 性別 --}}
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
@@ -83,7 +82,7 @@
                             </div>
                         </div>
 
-                        {{-- 性別 --}}
+                        {{-- 年齢 --}}
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="relative">
                                 <div class="flex">

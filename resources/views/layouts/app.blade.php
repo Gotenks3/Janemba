@@ -12,10 +12,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
-
-    <script src="{{ mix('js/swiper.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -42,8 +42,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                @auth
+                @if (isset(Auth::User()->profile))
                 <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                     <button type="button" onclick="location.href='{{ route('home')}}'">商品一覧</button>
+                </li>
+                
+                <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                    <button type="button" onclick="location.href='{{ route('product.create')}}'">出品</button>
                 </li>
 
                 <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
@@ -51,6 +57,9 @@
                         カート
                     </button>
                 </li>
+                @endif
+                @endauth
+                
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -66,6 +75,7 @@
                         </li>
                         @endif
 
+
                         @if (Route::has('register'))
                         <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                             <a class="nav-link" href="{{ route('register') }}">新規登録</a>
@@ -73,14 +83,13 @@
                         @endif
                         @else
 
-                        <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                        <li>
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                {{-- mypage --}}
                                 <a class="dropdown-item" href="{{ route('mypage') }}">
                                     マイページ
                                 </a>

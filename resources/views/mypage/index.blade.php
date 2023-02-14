@@ -12,9 +12,6 @@
                 <button type="button" onclick="location.href='{{ route('profile.index')}}'" class="border w-2/6 p-3 bg-gray-800 rounded hover:bg-gray-500">プロフィール</button>
             </div>
             <div class="text-blue-100 mb-6">
-                <button class="border w-2/6 p-3 bg-gray-800 rounded hover:bg-gray-500" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</button>
-            </div>
-            <div class="text-blue-100 mb-6">
                 <button type="button" onclick="location.href='{{ route('email')}}'" class="border w-2/6 p-3 bg-gray-800 rounded hover:bg-gray-500">メールアドレス変更</button>
             </div>
         </div>
