@@ -136,7 +136,7 @@ class UserProductController extends Controller
         }
 
         return redirect()
-            ->route('user.product.index')
+            ->route('mypage.product.index')
             ->with(['message' => '商品情報を更新しました。', 'status' => 'info']);
     }
 
@@ -144,7 +144,7 @@ class UserProductController extends Controller
     {
         $product = Product::findOrFail($product);
         $product->delete();
-        return redirect()->route('user.product.index')
+        return redirect()->route('mypage.product.index')
             ->with(['message' => '商品を削除しました。', 'status' => 'alert']);
     }
     

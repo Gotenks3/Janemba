@@ -82,8 +82,8 @@
             </div>
         </div>
         <div class="text-center mt-6">
-            <button type="button" onclick="location.href='{{ route('mypage')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
-            <button type="button" onclick="location.href='{{ route('profile.edit',['profile' => $user->profile->id])}}'" class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">編集する</button>
+            <button type="button" onclick="location.href='{{ route('mypage.')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+            <button type="button" onclick="location.href='{{ route('mypage.profile.edit',['profile' => $user->profile->id])}}'" class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">編集する</button>
         </div>
     </div>
 </section>

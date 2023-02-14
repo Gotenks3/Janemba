@@ -11,7 +11,7 @@
 
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                <form action="{{ route('profile.update')}}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('mypage.profile.update')}}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     {{-- 名前、商品情報 --}}
@@ -98,7 +98,7 @@
 
                         <div class="p-2 w-1/2 mx-auto">
                             <div class="flex">
-                                <button type="button" onclick="location.href='{{ route('profile.index')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                                <button type="button" onclick="location.href='{{ route('mypage.profile.index')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
                                 <button class="bg-blue-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-blue-400 rounded text-lg">更新</button>
                             </div>
                         </div>
