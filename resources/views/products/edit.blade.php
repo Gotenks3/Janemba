@@ -45,6 +45,7 @@
                             <div class="relative">
                                 <div class="flex">
                                     <label for="message" class="leading-7 text-sm text-gray-600">販売状況</label>
+                                    <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
                                 <select name="is_selling" id="is_selling" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     @foreach($sell as $key => $value)
@@ -99,7 +100,10 @@
                         {{-- 在庫数(stock) --}}
                         <div class="w-1/2 p-2 mx-auto">
                             <div class="relative">
-                                <label for="current_quantity" class="text-sm leading-7 text-gray-600">現在の在庫</label>
+                                <div class="flex">
+                                    <label for="current_quantity" class="text-sm leading-7 text-gray-600">現在の在庫</label>
+                                    <p class="text-red-400 ml-3 pt-px">※必須</p>
+                                </div>
                                 <input type="hidden" id="current_quantity" name="current_quantity" value="{{ $quantity }}">
                                 <div class="w-full px-3 py-1 text-base leading-8 text-gray-700 bg-gray-100 bg-opacity-50 rounded outline-none">{{ $quantity }}</div>
                             </div>
@@ -112,14 +116,16 @@
                         </div>
                         <div class="w-1/2 p-2 mx-auto">
                             <div class="relative">
-                                <label for="quantity" class="text-sm leading-7 text-gray-600">数量 ※必須</label>
+                                <div class="flex">
+                                    <label for="quantity" class="text-sm leading-7 text-gray-600">数量</label>
+                                    <p class="text-red-400 ml-3 pt-px">※必須</p>
+                                </div>
                                 <input type="number" id="quantity" name="quantity" value="0" required class="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200">
                                 <span class="text-sm">※0〜99の範囲で入力してください</span>
                             </div>
                         </div>
 
                         <div class="flex justify-center mt-16">
-
                             <button type="button" onclick="location.href='{{ route('product.show',['product' => $product->id])}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
                             <button class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">更新する</button>
                         </div>
