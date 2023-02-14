@@ -5,7 +5,7 @@
     <x-auth-flash-message status="session('status')" />
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            商品一覧
+            【マイページ】商品一覧
         </h2>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
@@ -15,7 +15,7 @@
                             @foreach ($products as $product )
                             <div class="lg:w-1/3 md:w-1/2 p-4 w-full border border-black ">
                                 <div class=" p-2 md:p-4">
-                                    <a href="{{ route('product.show',['product' => $product->id]) }}">
+                                    <a href="{{ route('user.product.show',['product' => $product->id]) }}">
                                         @if ($product->is_selling === App\Enums\ProductSelling::Sell)
                                         <button class="shadow-lg bg-blue-500 shadow-blue-500/50 text-white rounded px-1 py-1">販売中</button>
                                         @else

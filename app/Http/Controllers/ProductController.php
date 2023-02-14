@@ -37,7 +37,6 @@ class ProductController extends Controller
 
         // ユーザー情報取得
         $user = User::where('id', $product->user_id)->with('profile')->first();
-        // dd($user);
 
         return view('products.show', compact('product', 'user', 'product_sell'));
     }
@@ -116,6 +115,7 @@ class ProductController extends Controller
     {        
         $product = Product::with('stock')->findOrFail($id);
 
+        // ProductPolicyを設定
         $this->authorize('update', $product);
 
         $status = ProductState::asSelectArray();

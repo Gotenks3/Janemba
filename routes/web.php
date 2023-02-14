@@ -73,11 +73,9 @@ Route::prefix('user')->name('user.')->group(function () {
     Route::delete('/{user}/follow', [UserController::class, 'unfollow'])->name('unfollow')->middleware('auth');
 });
 
-// ログインユーザーの商品一覧
+// 【マイページ】ユーザーの商品一覧
 Route::prefix('user')->name('user.')->group(function () {
-    Route::prefix('product')->name('product.')->group(function () {
-        Route::get('/index', [UserProductController::class, 'index'])->name('index')->middleware('auth');
-    });
+        Route::resource('product', UserProductController::class);
 });
 
 //ユーザー詳細
