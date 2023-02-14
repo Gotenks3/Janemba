@@ -131,8 +131,28 @@
                     </div>
                 </form>
             </div>
+            <div class="flex justify-center mt-5">
+            <form id="delete" action="{{ route('mypage.product.destroy',['product' => $product->id])}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button class="bg-red-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-red-400 rounded text-lg">削除する</button>
+                </form>
+            </div>
         </div>
     </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<div is="script">
+$(function(){
+        $("#delete").submit(function(){
+            if(window.confirm('本当に削除してよろしいでしょうか？')) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
 </div>
 
 @endsection

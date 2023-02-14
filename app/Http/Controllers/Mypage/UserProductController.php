@@ -140,9 +140,9 @@ class UserProductController extends Controller
             ->with(['message' => '商品情報を更新しました。', 'status' => 'info']);
     }
 
-    public function destroy($product)
+    public function destroy($id)
     {
-        $product = Product::findOrFail($product);
+        $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('mypage.product.index')
             ->with(['message' => '商品を削除しました。', 'status' => 'alert']);
