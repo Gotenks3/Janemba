@@ -29,13 +29,6 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
-    // public function index()
-    // {
-    //     $products = Product::all();
-
-    //     return view('home', compact('products'));
-    // }
-
     public function show($product)
     {
         $product = Product::findOrFail($product);

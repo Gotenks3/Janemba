@@ -43,6 +43,7 @@
                 </button>
 
                 @auth
+                @if (isset(Auth::User()->profile))
                 <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                     <button type="button" onclick="location.href='{{ route('home')}}'">商品一覧</button>
                 </li>
@@ -56,6 +57,7 @@
                         カート
                     </button>
                 </li>
+                @endif
                 @endauth
                 
                 
@@ -72,6 +74,7 @@
                             <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                         </li>
                         @endif
+
 
                         @if (Route::has('register'))
                         <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">

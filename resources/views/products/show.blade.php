@@ -2,6 +2,8 @@
 
 @section('content')
 
+<x-auth-flash-message status="session('status')" />
+
 <div class="py-8">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -13,8 +15,6 @@
                     <div class="container mx-auto flex flex-col bg-slate-50">
                         <div class="lg:w-4/6 md:w-1/2 p-4 w-full mx-auto border">
                             <div class="rounded-lg overflow-hidden">
-
-                                <x-auth-flash-message status="session('status')" />
                                 <!-- Slider main container -->
                                 <div class="swiper-container">
                                     <!-- Additional required  wrapper -->
@@ -110,7 +110,8 @@
 
                                 <div class="sm:w-1/3  sm:pr-4 sm:py-4">
                                     @if ($user->profile)
-                                    <h2 class="text-sm title-font text-gray-500 tracking-widest mb-3 text-center">出品者情報</h2>
+                                    <h2 class="text-sm title-font text-gray-500 tracking-widest mb-3 text-center">-出品者情報-</h2>
+
                                     <a href="{{ route('user.show', ['id' => $user->id]) }}">
                                         <div class="flex justify-center">
                                             @if (!is_null($user->profile->icon))
