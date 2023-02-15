@@ -24,16 +24,10 @@ class CartController extends Controller
         return view('carts.index', compact('user', 'products', 'totalPrice'));
     }
 
-    public function add(Request $request, $product)
+    public function add(Request $request, $id)
     {
-        $product = Product::findOrFail($product);
+        $product = Product::findOrFail($id);
         
-// dd($request->product_);
-        // cartに追加したときに在庫も同時に減らす
-        // cartに追加したときにカートに入れる分の在庫があるか、確認
-        // 「カートを追加」を連続して押してもamountが追加される
-
-        // もし、同じproduct_idが存在していたら作成ではなく、更新する
         $itemInCart = Cart::where('product_id', $request->product_id)
         ->where('user_id', Auth::id())->first();
         

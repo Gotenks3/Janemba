@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
                 'name' => 'MacBook Pro(Mid 2012)',
                 'content' => 'マックブック-プロ【MacBook Pro】
                 米国アップル社が2006年に発表したノート型パソコンのシリーズ名。 MacBookの上位機種に位置づけられ、米国インテル社のCPUを初めて採用。 13、15、17インチの液晶ディスプレーを搭載するモデルがある。',
-                'image1' => 'macbookpro1-1000.jpeg',
+                'image1' => 'macbookpro1-1001.jpeg',
                 'image2' => 'macbookpro4-1000.jpeg',
                 'image3' => 'macbookpro9-1000.jpeg',
                 'image4' => 'macbookpro11-1000.jpeg',
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
             [
                 'user_id' => 2,
                 'secondary_category_id' => 11,
-                'name' => 'コールマン (Coleman) インフィニティチェア',
+                'name' => '【コールマン】 インフィニティチェア',
                 'content' => '●使用時サイズ:約92x69x110（h）cm（通常時）、約166x69x76（h）cm（リクライニング最大時）
                 ●収納時/約15x69x90（h）cm
                 ●重量:約8.8kg

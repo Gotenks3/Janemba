@@ -55,9 +55,9 @@ class UserProductController extends Controller
         return view('mypage.product.edit', compact('product', 'status', 'sell', 'categories', 'quantity'));
     }
 
-    public function update(ProductUpdateRequest $request, $product)
+    public function update(ProductUpdateRequest $request, $id)
     {
-        $product = Product::findOrFail($product);
+        $product = Product::findOrFail($id);
         $stock = $product->stock;
         
         $imageFile1 = $request->image1;

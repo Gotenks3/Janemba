@@ -36,6 +36,7 @@ class UserController extends Controller
         ];
     }
 
+    // フォロー解除
     public function unfollow(Request $request, User $user)
     {
         $user->followers()->detach($request->user()->id);
