@@ -17,83 +17,95 @@ class SecondaryCategorySeeder extends Seeder
         DB::table('secondary_categories')->insert([
         [
             'primary_category_id' => 1,
-            'name' => 'ギニュー',
+            'name' => '食料',
         ],
         [
             'primary_category_id' => 1,
-            'name' => 'ジース',
+            'name' => '飲料',
         ],
         [
             'primary_category_id' => 1,
-            'name' => 'バータ',
-        ],
-        [
-            'primary_category_id' => 1,
-            'name' => 'フリーザ',
+            'name' => 'お酒',
         ],
         [
             'primary_category_id' => 2,
-            'name' => 'Dr.ゲロ',
+            'name' => '医療品',
         ],
         [
             'primary_category_id' => 2,
-            'name' => '17号',
+            'name' => 'ヘアケア・スタイリング',
         ],
         [
             'primary_category_id' => 2,
-            'name' => '18号',
+            'name' => '美容品',
         ],
         [
             'primary_category_id' => 2,
-            'name' => 'セル',
+            'name' => '日用品',
         ],
         [
             'primary_category_id' => 3,
-            'name' => 'ダーブラ',
+            'name' => '自転車',
         ],
         [
             'primary_category_id' => 3,
-            'name' => 'ゴテンクス',
+            'name' => '釣り',
         ],
         [
             'primary_category_id' => 3,
-            'name' => 'ベジット',
+            'name' => 'ゴルフ',
         ],
         [
             'primary_category_id' => 3,
-            'name' => '魔人ブウ',
+            'name' => '全てのスポーツ・アウトドア',
         ],
         [
             'primary_category_id' => 4,
-            'name' => 'メタルクウラ',
+            'name' => 'キッチン家電',
         ],
         [
             'primary_category_id' => 4,
-            'name' => 'ボージャック',
+            'name' => '日用家電',
         ],
         [
             'primary_category_id' => 4,
-            'name' => 'ブロリー',
+            'name' => 'カメラ・ビデオカメラ',
         ],
         [
             'primary_category_id' => 4,
-            'name' => 'ジャネンバ',
+            'name' => '全ての家電・カメラ類',
         ],
         [
             'primary_category_id' => 5,
-            'name' => 'ビルス',
+            'name' => 'パソコン・タブレット',
         ],
         [
             'primary_category_id' => 5,
-            'name' => 'ウイス',
+            'name' => 'テレビ・モニター',
         ],
         [
             'primary_category_id' => 5,
-            'name' => 'ジレン',
+            'name' => '無線LAN・インターネット機器',
         ],
         [
             'primary_category_id' => 5,
-            'name' => 'ヒット',
+            'name' => 'キーボード・マウス・入力機器',
+        ],
+        [
+            'primary_category_id' => 6,
+            'name' => '本',
+        ],
+        [
+            'primary_category_id' => 6,
+            'name' => '漫画',
+        ],
+        [
+            'primary_category_id' => 6,
+            'name' => '雑誌',
+        ],
+        [
+            'primary_category_id' => 6,
+            'name' => '文書',
         ],
     ]);
     }

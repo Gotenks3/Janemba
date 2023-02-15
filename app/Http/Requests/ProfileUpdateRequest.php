@@ -27,7 +27,7 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'nickname' => 'required|max:15',
-            'content' => 'required|max:200|',
+            'content' => 'required|max:300|',
             'icon' => 'max:1024|mimes:jpg,jpeg,png,gif',
             'prefecture' => ['required','numeric',Rule::in(array_keys(config('pref')))],
             'gender'=> ['required','numeric',Rule::in(GenderType::getValues())],

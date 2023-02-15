@@ -41,7 +41,7 @@ class ChangeEmailController extends Controller
 
         $email_reset->sendEmailResetNotification($token);
 
-        return redirect()->route('email')
+        return redirect()->route('mypage.email')
             ->with(['message' => '確認メールを送信しました。' , 'status' => 'info']);
     }
 
@@ -57,29 +57,26 @@ class ChangeEmailController extends Controller
             ->where('token', $token)
             ->first();
 
-        // トークンが存在している、かつ、有効期限が切れていないかチェック
         if ($email_resets && !$this->tokenExpired($email_resets->created_at)) {
 
-            // ユーザーのメールアドレスを更新
             $user = User::find($email_resets->user_id);
             $user->email = $email_resets->new_email;
             $user->save();
 
-            // レコードを削除
             DB::table('email_resets')
                 ->where('token', $token)
                 ->delete();
 
-            return redirect()->route('mypage')
+            return redirect()->route('mypage.')
                 ->with(['message' => 'メールアドレスを変更しました。' , 'status' => 'info']);
         } else {
-            // レコードが存在していた場合削除
+
             if ($email_resets) {
                 DB::table('email_resets')
                     ->where('token', $token)
                     ->delete();
             }
-            return redirect()->route('mypage')
+            return redirect()->route('mypage.')
                 ->with(['message' => 'メールアドレスの変更に失敗しました。' , 'status' => 'alert']);
         }
     }

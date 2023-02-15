@@ -92,7 +92,7 @@ class ProfileController extends Controller
         }
 
         return redirect()
-        ->route('profile.index')
+        ->route('mypage.profile.index')
         ->with(['message' => 'プロフィールを更新しました。','status' => 'info']);
     }
 }

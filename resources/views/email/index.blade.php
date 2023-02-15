@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-header">メールアドレス変更</div>
 
-                    <form action="{{ route('email.reset')}}" method="post">
+                    <form action="{{ route('mypage.email.reset')}}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="-m-2">
