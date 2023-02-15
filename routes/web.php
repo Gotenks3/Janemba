@@ -36,12 +36,11 @@ Route::prefix('mypage')->name('mypage.')->group(function () {
     // プロフィール
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-        Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
-        Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
         Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('update', [ProfileController::class, 'update'])->name('profile.update');
     });
 
+    // 
     // メールアドレス変更
     Route::prefix('email')->group(function () {
         Route::get('/edit', [ChangeEmailController::class, 'index'])->name('email');
@@ -49,9 +48,13 @@ Route::prefix('mypage')->name('mypage.')->group(function () {
     });
 
     // 【マイページ】ユーザーの商品一覧
-    Route::resource('product', UserProductController::class)->except('create','store');
+    Route::resource('product', UserProductController::class)->except('create', 'store');
 });
 
+Route::prefix('profile')->group(function () {
+    Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
+    Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
+});
 
 
 // 新規メールアドレスに更新

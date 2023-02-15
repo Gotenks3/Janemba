@@ -12,7 +12,7 @@
                 <section class="text-gray-600 body-font">
                     <div class="container px-5 mx-auto">
                         <div class="flex flex-wrap">
-        @if ($products->count() > 0)
+                            @if ($products->count() > 0)
                             @foreach ($products as $product )
                             <div class="lg:w-1/3 md:w-1/2 p-4 w-full border border-black ">
                                 <div class=" p-2 md:p-4">
@@ -40,8 +40,8 @@
         </div>
         {{ $products->links() }}
         @else
-                    商品が登録されていません。
-                  @endif
+        商品が登録されていません。
+        @endif
     </div>
 </div>
 
