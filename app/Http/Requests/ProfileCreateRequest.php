@@ -28,7 +28,7 @@ class ProfileCreateRequest extends FormRequest
         return [
             'user_id' => 'required|exists:App\Models\User,id',
             'nickname' => 'required|max:15',
-            'content' => 'required|max:200|',
+            'content' => 'required|max:300|',
             'icon' => 'required|max:1024|mimes:jpg,jpeg,png,gif',
             'prefecture' => ['required','numeric',Rule::in(array_keys(config('pref')))],
             'gender'=> ['required','numeric',Rule::in(GenderType::getValues())],

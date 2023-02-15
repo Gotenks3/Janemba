@@ -7,7 +7,7 @@
 <div class="py-8">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            商品詳細
+            【マイページ】商品詳細
         </h2>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
@@ -133,7 +133,8 @@
                             </div>
                         </div>
                         <div class="flex justify-center mt-16">
-                            <button type="button" onclick="location.href='{{ route('home')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                            <button type="button" onclick="location.href='{{ route('mypage.product.index')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                            <button type="button" onclick="location.href='{{ route('mypage.product.edit', ['product' => $product->id])}}'" class="bg-blue-300 border-0 py-2 px-8 ml-7 focus:outline-none hover:bg-blue-400 rounded text-lg">編集する</button>
                         </div>
                     </div>
                 </section>

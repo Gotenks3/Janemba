@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangeEmailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Mypage\UserProductController;
 use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
@@ -29,37 +30,41 @@ Route::prefix('login')->name('login.')->group(function () {
 });
 
 // マイページ
-Route::prefix('mypage')->group(function(){
-    Route::get('/', [UserController::class, 'mypage'])->name('mypage');
+Route::prefix('mypage')->name('mypage.')->group(function () {
+    Route::get('/', [UserController::class, 'mypage']);
+
+    // プロフィール
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('update', [ProfileController::class, 'update'])->name('profile.update');
+    });
+
+    // 
+    // メールアドレス変更
+    Route::prefix('email')->group(function () {
+        Route::get('/edit', [ChangeEmailController::class, 'index'])->name('email');
+        Route::post('/', [ChangeEmailController::class, 'sendChangeEmailLink'])->name('email.reset');
+    });
+
+    // 【マイページ】ユーザーの商品一覧
+    Route::resource('product', UserProductController::class)->except('create', 'store');
 });
 
-// メールアドレス変更
-Route::prefix('email')->group(function(){
-    // view
-    Route::get('/edit', [ChangeEmailController::class, 'index'])->name('email');
-    // 編集
-    Route::post('/', [ChangeEmailController::class, 'sendChangeEmailLink'])->name('email.reset');
+Route::prefix('profile')->group(function () {
+    Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
+    Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
 });
+
 
 // 新規メールアドレスに更新
 Route::get("reset/{token}", [ChangeEmailController::class, 'reset'])->name('reset');
-
-
-
-// プロフィール
-Route::prefix('profile')->group(function(){
-    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/create', [ProfileController::class, 'create'])->name('profile.create');
-    Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
-    Route::get('edit/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('update', [ProfileController::class, 'update'])->name('profile.update');
-});
 
 // カート機能
 Route::prefix('product')->name('product.')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
     Route::put('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
-    Route::delete('/cart/{product}/reduce', [CartController::class, 'reduce'])->name('cart.reduce')->middleware('auth');
+    Route::post('/cart/delete/{product}', [CartController::class, 'delete'])->name('cart.delete')->middleware('auth');
 });
 
 // いいね機能

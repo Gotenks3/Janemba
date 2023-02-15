@@ -16,7 +16,6 @@
         フォロー中
       </button>
     </div>
-    {{ this.isFollowedBy }}
 
   </div>
 </template>

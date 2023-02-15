@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 use App\Enums\GenderType;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,21 +17,11 @@ class UserController extends Controller
 
     public function show($id)
     {
-        // dd(1);
-        // $user = User::find($id);
-        // $product = $user->products->get();
-        // dd($user->count_products);
-        // dd($user->count_follows);
-        // dd(Auth::user());
-        // dd($user->isFollowedBy(Auth::user()));
-
         $user = User::with('profile')->findOrFail($id);
-        // dd($user);
         $gender = GenderType::asSelectArray();
+        $product_count = Product::where('user_id', Auth::id())->count();
 
-        // dd($profileShow);
-
-        return view('user.show', compact('user', 'gender'));
+        return view('user.show', compact('user', 'gender', 'product_count'));
     }
 
     // フォロー機能
@@ -45,6 +36,7 @@ class UserController extends Controller
         ];
     }
 
+    // フォロー解除
     public function unfollow(Request $request, User $user)
     {
         $user->followers()->detach($request->user()->id);

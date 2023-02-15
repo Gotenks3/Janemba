@@ -16,19 +16,22 @@ class PrimaryCategorySeeder extends Seeder
     {
         DB::table('primary_categories')->insert([
         [
-            'name' => 'フリーザ編',
+            'name' => '食料・飲料・お酒',
         ],
         [
-            'name' => 'セル編',
+            'name' => 'ドラッグストア・美容',
         ],
         [
-            'name' => '魔人ブウ編',
+            'name' => 'スポーツ・アウトドア',
         ],
         [
-            'name' => '映画編',
+            'name' => '家電・カメラ',
         ],
         [
-            'name' => 'DB超編',
+            'name' => 'パソコン・オフィス用品',
+        ],
+        [
+            'name' => '本・漫画・雑誌',
         ]
     ]);
     }
