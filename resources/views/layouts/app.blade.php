@@ -24,7 +24,6 @@
 
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -38,46 +37,46 @@
                         Practice
                     </i>
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                @auth
-                @if (isset(Auth::User()->profile))
-                <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
-                    <button type="button" onclick="location.href='{{ route('home')}}'">商品一覧</button>
-                </li>
-
-                <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
-                    <button type="button" onclick="location.href='{{ route('product.create')}}'">出品</button>
-                </li>
-
-                <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
-                    <button type="button" onclick="location.href='{{ route('product.cart.index')}}'">
-                        カート
-                    </button>
-                </li>
-                @endif
-                @endauth
-
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @auth
+                        @if (isset(Auth::User()->profile))
+                        <div class="flex">
+                            <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                                <button type="button" onclick="location.href='{{ route('home')}}'">商品一覧</button>
+                            </li>
+                            <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                                <button type="button" onclick="location.href='{{ route('product.create')}}'">出品</button>
+                            </li>
+                            <li class="p-4 list-none border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                                <button type="button" onclick="location.href='{{ route('product.cart.index')}}'">
+                                    カート
+                                </button>
+                            </li>
+                        </div>
+
+                        @endif
+                        @endauth
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
-                        <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                        <li class="p-2 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                             <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                         </li>
                         @endif
 
 
                         @if (Route::has('register'))
-                        <li class="p-4 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
+                        <li class="p-2 border-b-2 border-green-500 border-opacity-0 hover:border-opacity-100 hover:text-green-500 duration-200 cursor-pointer active">
                             <a class="nav-link" href="{{ route('register') }}">新規登録</a>
                         </li>
                         @endif
