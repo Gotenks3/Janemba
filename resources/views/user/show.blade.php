@@ -26,7 +26,7 @@
                             <img src="{{ asset('storage/profiles/'  . $user->profile->icon) }}" alt="icon" class="object-fill" style="border-radius: 50%; width: 200px; height: 200px;">
                         </div>
                     </div>
-                    <div class="w-full px-4 text-center mt-6">
+                    <div class="w-full text-center mt-6">
                         <div class="flex justify-center py-4 lg:pt-4 pt-8">
                             <div class="mr-4 p-3 text-center">
                                 <a href="" class="no-underline">

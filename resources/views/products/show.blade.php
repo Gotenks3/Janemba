@@ -13,7 +13,7 @@
             <div class="p-6 text-gray-900">
                 <section class="text-gray-600 body-font">
                     <div class="container mx-auto flex flex-col bg-slate-50">
-                        <div class="lg:w-4/6 md:w-1/2 p-4 w-full mx-auto border">
+                        <div class="lg:w-4/6 md:w-2/3 p-1 w-full mx-auto border">
                             <div class="rounded-lg overflow-hidden">
                                 <!-- Slider main container -->
                                 <div class="swiper-container">
@@ -57,8 +57,8 @@
                                 </div>
                             </div>
                             <div class="flex flex-col sm:flex-row mt-10">
-                                
-                                <div class="lg:w-4/6 w-full px-4  lg:py-6 mb-6 lg:mb-0">
+
+                                <div class="lg:w-4/6 w-full px-4  lg:mb-6 lg:mb-0">
                                     <h2 class="text-sm title-font text-gray-500 tracking-widest">商品名</h2>
                                     <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ $product->name }}</h1>
                                     <div class="flex mb-4">
@@ -89,21 +89,21 @@
                                     </div>
 
                                     {{-- cart --}}
-                                    <div class="flex justify-center mb-4">
-                                        <div class="ml-4">
-                                            <form action="{{ route('product.cart.add',['product' => $product->id])}}" method="post">
-                                                @method('PUT')
-                                                @csrf
-                                                <label for="amount" class="leading-7 text-sm text-gray-600">数量:</label>
-                                                <input type="number" id="amount" name="amount" value="1" min="1" max="100" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <div class="flex justify-center mb-2">
+                                        <form action="{{ route('product.cart.add',['product' => $product->id])}}" method="post">
+                                            @method('PUT')
+                                            @csrf
+                                            <label for="amount" class="leading-7 text-sm text-gray-600">数量:</label>
+                                            <input type="number" id="amount" name="amount" value="1" min="1" max="100" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
 
-                                                <input type="hidden" name="product_id" value="{{ $product->id}}">
-                                                <button type="submit" class="ml-4 text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-400 rounded">カートに追加</button>
-                                            </form>
-                                        </div>
+                                            <input type="hidden" name="product_id" value="{{ $product->id}}">
+                                            <button type="submit" class="py-1 px-2 md:ml-4 text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-400 rounded">カートに追加</button>
+                                        </form>
                                     </div>
-                                    <div class="flex justify-center">
+                                    <div class="flex justify-center mb-2">
                                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
+                                    </div>
+                                    <div class="flex flex-row-reverse mr-4">
                                         <like-component :initial-is-liked-by='@json($product->isLikedBy(Auth::user()))' :initial-count-likes='@json($product->count_likes)' endpoint="{{ route('product.like', ['product' => $product]) }}" />
                                     </div>
                                 </div>
@@ -144,34 +144,34 @@
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <div is="script">
-var mySwiper = new Swiper(".swiper-container", {
-            // オプション設定
-            loop: true, // ループ
-            speed: 600, // 切り替えスピード(ミリ秒)。
-            slidesPerView: 1, // １スライドの表示数
-            spaceBetween: 0, // スライドの余白(px)
-            direction: "horizontal", // スライド方向
-            effect: "coverflow", // スライド効果 ※ここを変更
+    var mySwiper = new Swiper(".swiper-container", {
+    // オプション設定
+    loop: true, // ループ
+    speed: 600, // 切り替えスピード(ミリ秒)。
+    slidesPerView: 1, // １スライドの表示数
+    spaceBetween: 0, // スライドの余白(px)
+    direction: "horizontal", // スライド方向
+    effect: "coverflow", // スライド効果 ※ここを変更
 
-            // ページネーションを有効化
-            pagination: {
-                el: ".swiper-pagination",
-            },
+    // ページネーションを有効化
+    pagination: {
+    el: ".swiper-pagination",
+    },
 
-            // ナビゲーションを有効化
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
+    // ナビゲーションを有効化
+    navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+    },
+    });
 </div>
 
 <div is="style">
-.swiper-container {
+    .swiper-container {
     height: 300px;
-  }
+    }
 
 </div>
-    
+
 
 @endsection
