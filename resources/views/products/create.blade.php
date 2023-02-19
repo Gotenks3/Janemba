@@ -3,7 +3,7 @@
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight pl-4">
             出品
         </h2>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -63,7 +63,7 @@
 
 
                         {{-- 商品の状態 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 mx-auto lg:w-1/2 sm:2/3">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="state" class="leading-7 text-sm text-gray-600">商品の状態</label>

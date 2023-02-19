@@ -4,7 +4,7 @@
 
   <div class="py-12">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight pl-4">
             カート一覧
         </h2>
           <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
