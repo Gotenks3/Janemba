@@ -27,7 +27,7 @@
                         <div class="p-2 mx-auto w-3/4 md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
-                                    <label for="email" class="leading-7 text-sm text-gray-600">新しいメールアドレス</label>
+                                    <label for="email" class="leading-7 text-sm text-gray-600">新規メールアドレス</label>
                                 </div>
                                 <input type="email" name="new_email" value="{{ old('new_email') }}" required class="pr-14 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 pl-3 md:pr-64 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
