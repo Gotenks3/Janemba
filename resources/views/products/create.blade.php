@@ -15,7 +15,7 @@
                     @csrf
                     {{-- 名前、商品情報 --}}
                     <div class="-m-2">
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="name" class="leading-7 text-sm text-gray-600">商品名</label>
@@ -24,16 +24,16 @@
                                 <input type="text" id="name" name="name" value="{{ old('name') }}" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 mx-auto w-3/4 md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
-                                    <label for="information" class="leading-7 text-sm text-gray-600">商品情報 </label>
+                                    <label for="information" class="leading-7 text-sm text-gray-600">商品情報</label>
                                     <p class="text-red-400 ml-3 pt-px">※必須</p>
                                 </div>
                                 <textarea id="information" name="content" rows="10" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ old('content') }}</textarea>
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
 
                             <div class="relative">
                                 <div class="flex">
@@ -45,7 +45,7 @@
                         </div>
 
                         {{-- 販売 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="state" class="leading-7 text-sm text-gray-600">販売</label>
@@ -63,7 +63,7 @@
 
 
                         {{-- 商品の状態 --}}
-                        <div class="p-2 mx-auto lg:w-1/2 sm:2/3">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="state" class="leading-7 text-sm text-gray-600">商品の状態</label>
@@ -78,7 +78,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="category" class="leading-7 text-sm text-gray-600">カテゴリー</label>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="quantity" class="leading-7 text-sm text-gray-600">初期在庫</label>
@@ -111,7 +111,7 @@
                         </div>
 
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
 
                                 <div class="mb-5">

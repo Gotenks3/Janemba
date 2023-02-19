@@ -18,7 +18,7 @@
                     @csrf
 
                     <div class="-m-2">
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="name" class="leading-7 text-sm text-gray-600">商品名</label>
@@ -28,7 +28,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="message" class="leading-7 text-sm text-gray-600">商品内容</label>
@@ -40,7 +40,7 @@
                         {{-- component読み込み --}}
                         <x-product-image-display :product="$product" />
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="message" class="leading-7 text-sm text-gray-600">販売状況</label>
@@ -53,7 +53,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="message" class="leading-7 text-sm text-gray-600">料金</label>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="message" class="leading-7 text-sm text-gray-600">商品の状態</label>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="category" class="leading-7 text-sm text-gray-600">カテゴリー</label>
@@ -97,7 +97,7 @@
                         </div>
 
                         {{-- 在庫数(stock) --}}
-                        <div class="w-1/2 p-2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="current_quantity" class="text-sm leading-7 text-gray-600">現在の在庫</label>
@@ -107,13 +107,13 @@
                                 <div class="w-full px-3 py-1 text-base leading-8 text-gray-700 bg-gray-100 bg-opacity-50 rounded outline-none">{{ $quantity }}</div>
                             </div>
                         </div>
-                        <div class="w-1/2 p-2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative flex justify-around">
                                 <div><input type="radio" name="type" value="1" class="mr-2" checked>追加</div>
                                 <div><input type="radio" name="type" value="2" class="mr-2">削減</div>
                             </div>
                         </div>
-                        <div class="w-1/2 p-2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="quantity" class="text-sm leading-7 text-gray-600">数量</label>

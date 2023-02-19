@@ -16,7 +16,7 @@
 
                     {{-- 名前、商品情報 --}}
                     <div class="-m-2">
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="nickname" class="leading-7 text-sm text-gray-600">商品名</label>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="message" class="leading-7 text-sm text-gray-600">自己紹介</label>
@@ -39,7 +39,7 @@
                         </div>
 
                         {{-- 画像 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="icon" class="leading-7 text-sm text-gray-600">アイコン画像</label>
@@ -51,7 +51,7 @@
                         </div>
 
                         {{-- 都道府県 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="prefecture" class="leading-7 text-sm text-gray-600">都道府県</label>
@@ -67,7 +67,7 @@
                         </div>
 
                         {{-- 性別 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="gender" class="leading-7 text-sm text-gray-600">性別</label>
@@ -83,7 +83,7 @@
                         </div>
 
                         {{-- 年齢 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
@@ -96,11 +96,9 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
-                            <div class="flex">
-                                <button type="button" onclick="location.href='{{ route('mypage.profile.index')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
-                                <button class="bg-blue-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-blue-400 rounded text-lg">更新</button>
-                            </div>
+                        <div class="flex justify-center mt-16">
+                            <button type="button" onclick="location.href='{{ route('mypage.profile.index')}}'" class="bg-gray-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                            <button class="bg-blue-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-blue-400 rounded text-lg">更新</button>
                         </div>
                     </div>
                 </form>
