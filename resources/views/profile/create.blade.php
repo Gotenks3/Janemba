@@ -3,7 +3,7 @@
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight pl-4">
             プロフィール登録
         </h2>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -16,7 +16,7 @@
 
                     {{-- 名前、商品情報 --}}
                     <div class="-m-2">
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="nickname" class="leading-7 text-sm text-gray-600">ニックネーム</label>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="content" class="leading-7 text-sm text-gray-600">自己紹介</label>
@@ -39,7 +39,7 @@
 
 
                         {{-- 画像 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="icon" class="leading-7 text-sm text-gray-600">アイコン画像</label>
@@ -52,7 +52,7 @@
 
 
                         {{-- 都道府県 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="prefecture" class="leading-7 text-sm text-gray-600">都道府県</label>
@@ -70,7 +70,7 @@
 
 
                         {{-- 性別 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="gender" class="leading-7 text-sm text-gray-600">性別</label>
@@ -87,7 +87,7 @@
                         </div>
 
                         {{-- 年齢 --}}
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="relative">
                                 <div class="flex">
                                     <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 w-3/4 mx-auto md:w-1/2">
                             <div class="flex justify-center mt-3">
                                 <button class="bg-blue-200 border-0 py-2 px-8 mr-7 focus:outline-none hover:bg-blue-400 rounded text-lg">登録</button>
                             </div>

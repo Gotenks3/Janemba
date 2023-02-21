@@ -103,7 +103,7 @@
                                     <div class="flex justify-center mb-2">
                                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}円(税込)</span>
                                     </div>
-                                    <div class="flex flex-row-reverse mr-4">
+                                    <div class="flex flex-row-reverse mr-4 mb-4">
                                         <like-component :initial-is-liked-by='@json($product->isLikedBy(Auth::user()))' :initial-count-likes='@json($product->count_likes)' endpoint="{{ route('product.like', ['product' => $product]) }}" />
                                     </div>
                                 </div>
