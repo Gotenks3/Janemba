@@ -22,7 +22,7 @@
                     <div class="w-full text-center mt-6">
                         <div class="flex justify-center py-4 lg:pt-4 pt-8">
                             <div class="mr-4 p-3 text-center">
-                                <a href="" class="no-underline">
+                                <a href="{{ route('profile.follow.index') }}" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                     {{ $user->count_follows }}
                                     </span>

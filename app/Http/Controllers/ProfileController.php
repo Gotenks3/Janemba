@@ -95,4 +95,12 @@ class ProfileController extends Controller
         ->route('mypage.profile.index')
         ->with(['message' => 'プロフィールを更新しました。','status' => 'info']);
     }
+
+    public function followIndex()
+    {
+        $user = User::findOrFail(Auth::id());
+        $follows = $user->follows;
+        
+        return view('profile.follow.index',compact('follows'));
+    }
 }
