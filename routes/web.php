@@ -59,12 +59,14 @@ Route::prefix('profile')->group(function () {
 // 出品者情報　 --follow,follower,products
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('/{id}/follow', [UserController::class, 'followIndex'])->name('follow.index');
+    Route::get('/{id}/follower', [UserController::class, 'followerIndex'])->name('follower.index');
 });
 
 
 // profileIndex (follow,follower,product)一覧表示
 Route::prefix('profile')->name('profile.')->group(function () {
     Route::get('/follow', [ProfileController::class, 'followIndex'])->name('follow.index');
+    Route::get('/follower', [ProfileController::class, 'followerIndex'])->name('follower.index');
 
 });
 
