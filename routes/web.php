@@ -65,6 +65,9 @@ Route::prefix('product')->name('product.')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
     Route::put('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
     Route::post('/cart/delete/{product}', [CartController::class, 'delete'])->name('cart.delete')->middleware('auth');
+    Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth');
+    Route::get('/cart/success', [CartController::class, 'success'])->name('cart.success');
+    Route::get('/cart/cancel', [CartController::class, 'cancel'])->name('cart.cancel');
 });
 
 // いいね機能
