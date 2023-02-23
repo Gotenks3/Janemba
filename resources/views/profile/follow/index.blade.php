@@ -13,7 +13,9 @@
                 @foreach ($follows as $followUser )
                 <div class="mb-2 md:flex md:items-center border-b-2 border-fuchsia-600">
                     <div class="flex justify-around md:w-3/12 mb-3">
+                    <a href="{{ route('user.show', ['id' => $followUser->id]) }}">
                         <img src="{{ asset('storage/profiles/'  . $followUser->profile->icon) }}" alt="no-image" class="object-fill" style="border-radius: 50%; width: auto; height: auto;"></img>
+                    </a>
                     </div>
                     <div class="flex justify-around md:w-3/12 mb-3">
                         {{ $followUser->profile->nickname }}
@@ -22,7 +24,9 @@
                         <div>{{ $followUser->profile->content }}</div>
                     </div>
                     <div class="flex justify-around md:w-3/12 mb-3">
+                    @if( Auth::id() !== $followUser->id )
                         <follow-component :initial-is-followed-by='@json($followUser->isFollowedBy(Auth::user()))' :count-followers='@json($followUser->count_followers)' endpoint="{{ route('user.follow', ['user' => $followUser]) }}" />
+                    @endif
                     </div>
                 </div>
                 @endforeach
