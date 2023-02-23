@@ -60,6 +60,7 @@ Route::prefix('profile')->group(function () {
 Route::prefix('user')->name('user.')->group(function () {
     Route::get('/{id}/follow', [UserController::class, 'followIndex'])->name('follow.index');
     Route::get('/{id}/follower', [UserController::class, 'followerIndex'])->name('follower.index');
+    Route::get('/{id}/product', [UserController::class, 'productIndex'])->name('product.index');
 });
 
 
@@ -67,7 +68,7 @@ Route::prefix('user')->name('user.')->group(function () {
 Route::prefix('profile')->name('profile.')->group(function () {
     Route::get('/follow', [ProfileController::class, 'followIndex'])->name('follow.index');
     Route::get('/follower', [ProfileController::class, 'followerIndex'])->name('follower.index');
-
+    Route::get('/product', [ProfileController::class, 'productIndex'])->name('product.index');
 });
 
 // 新規メールアドレスに更新

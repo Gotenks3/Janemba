@@ -46,7 +46,7 @@
                                 </a>
                             </div>
                             <div class="lg:mr-4 p-3 text-center">
-                                <a href="" class="no-underline">
+                                <a href="{{ route('user.product.index', ['id' => $user->id]) }}" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                         {{ $product_count }}
                                     </span>

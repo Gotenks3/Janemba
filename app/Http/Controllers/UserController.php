@@ -62,4 +62,12 @@ class UserController extends Controller
         
         return view('user.follower.index',compact('followers'));
     }
+
+    public function productIndex($id)
+    {
+        $user = User::findOrFail($id);
+        $products = Product::where('user_id', $user->id)->get();
+        
+        return view('user.product.index',compact('products'));
+    }
 }
