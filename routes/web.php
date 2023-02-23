@@ -56,6 +56,17 @@ Route::prefix('profile')->group(function () {
     Route::post('/', [ProfileController::class, 'store'])->name('profile.store');
 });
 
+// 出品者情報　 --follow,follower,products
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/{id}/follow', [UserController::class, 'followIndex'])->name('follow.index');
+});
+
+
+// profileIndex (follow,follower,product)一覧表示
+Route::prefix('profile')->name('profile.')->group(function () {
+    Route::get('/follow', [ProfileController::class, 'followIndex'])->name('follow.index');
+
+});
 
 // 新規メールアドレスに更新
 Route::get("reset/{token}", [ChangeEmailController::class, 'reset'])->name('reset');
