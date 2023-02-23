@@ -54,4 +54,12 @@ class UserController extends Controller
         
         return view('user.follow.index',compact('follows'));
     }
+
+    public function followerIndex($id)
+    {
+        $user = User::findOrFail($id);
+        $followers = $user->followers;
+        
+        return view('user.follower.index',compact('followers'));
+    }
 }

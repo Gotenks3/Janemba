@@ -38,7 +38,7 @@
                                 </a>
                             </div>
                             <div class="mr-4 p-3 text-center">
-                                <a href="" class="no-underline">
+                                <a href="{{ route('user.follower.index', ['id' => $user->id]) }}" class="no-underline">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                         {{ $user->count_followers }}
                                     </span>

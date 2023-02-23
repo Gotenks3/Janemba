@@ -103,4 +103,12 @@ class ProfileController extends Controller
         
         return view('profile.follow.index',compact('follows'));
     }
+
+    public function followerIndex()
+    {
+        $user = User::findOrFail(Auth::id());
+        $followers = $user->followers;
+        
+        return view('profile.follower.index',compact('followers'));
+    }
 }
