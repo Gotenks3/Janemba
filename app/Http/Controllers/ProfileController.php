@@ -111,4 +111,12 @@ class ProfileController extends Controller
         
         return view('profile.follower.index',compact('followers'));
     }
+
+    public function productIndex()
+    {
+        $user = User::findOrFail(Auth::id());
+        $products = Product::where('user_id', $user->id)->get();
+        
+        return view('profile.product.index',compact('products'));
+    }
 }
