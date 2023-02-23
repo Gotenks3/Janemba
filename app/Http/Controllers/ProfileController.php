@@ -18,6 +18,11 @@ class ProfileController extends Controller
         $user = User::with('profile')->findOrFail(Auth::id());
         $product_count = Product::where('user_id', Auth::id())->count();
         
+        // profileを登録していなかったらprofile.createにリダイレクトさせる
+        if(!isset(Auth::user()->profile)){
+            return redirect()->route('profile.create');
+        }
+
         return view('profile.index', compact('user', 'product_count'));
     }
 
